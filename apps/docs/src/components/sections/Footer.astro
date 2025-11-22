@@ -1,46 +1,32 @@
 ---
-import { BrandDiscordIcon, BrandGitHubIcon } from "@/assets/icons";
-
-import { Button } from "@/components/ui/button";
+import { HeartIcon } from "@/assets/icons";
+import OrbitUI from "@/assets/logo/orbitui_logo_dark.svg";
 ---
 
-<div
-  class="border-primary/5 flex items-center justify-center border-b backdrop-blur-sm"
+<footer
+  class="border-border bg-background/10 z-(--header-z-index) sticky left-0 top-0 w-full border-dashed backdrop-blur-md"
 >
-  <div class="container px-4 py-8">
-    <div class="flex items-center justify-between gap-4">
+  <div
+    class="border-border mx-auto flex max-w-6xl items-center justify-between border-x border-dashed px-3 py-12"
+  >
+    <div
+      class="text-muted-foreground flex w-full flex-col items-center justify-center gap-4 text-center"
+    >
       <div>
         <a href="/">
-          <img src="/orbitui.png" alt="orbitui logo" class="h-6" />
+          <OrbitUI class="h-6 w-auto" />
         </a>
-
-        <p class="text-muted-foreground text-md mb-4 mt-2 max-w-[250px]">
-          Accessible, Customizable, & Lightweight component library
-        </p>
-
-        <Button
-          variant="link"
-          class="inline-flex p-0 [&_svg]:size-5"
-          href="https://github.com/nsmichelj/orbitui"
-          target="_blank"
-        >
-          <BrandGitHubIcon />
-        </Button>
-        <Button
-          variant="link"
-          class="inline-flex p-0 [&_svg]:size-5"
-          href="https://discord.gg/JZHt3dNeJm"
-          target="_blank"
-        >
-          <BrandDiscordIcon />
-        </Button>
       </div>
+
+      <p class="text-md max-w-sm">
+        Accessible, Customizable, & Lightweight component library created with
+        <HeartIcon class="inline size-4 text-red-400" /> by
+        <a href="https://x.com/NSMichelJ" class="underline">Michelito</a>.
+      </p>
+
+      <p></p>
+
+      <p>©2025 OrbitUI.</p>
     </div>
-
-    <hr
-      class="via-primary/30 my-8 h-px border-0 bg-gradient-to-l from-transparent to-transparent"
-    />
-
-    © 2025 OrbitUI.
   </div>
-</div>
+</footer>

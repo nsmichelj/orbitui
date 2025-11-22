@@ -1,0 +1,46 @@
+---
+import { ArrowRightIcon, SparklesIcon } from "@/assets/icons";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+---
+
+<div class="border-border border-b border-dashed">
+  <div
+    class="border-border relative mx-auto max-w-6xl border-x border-dashed px-3"
+  >
+    <div
+      class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+    >
+    </div>
+    <div
+      class="relative flex flex-col items-center justify-center gap-6 py-40 text-center"
+    >
+      <Badge
+        size="md"
+        variant="outline"
+        rounded="full"
+        class="text-foreground/80 px-4 [&_svg]:size-5"
+      >
+        <SparklesIcon class="text-2xl text-amber-200" /> New components await!
+      </Badge>
+      <h1 class="text-shadow-lg max-w-3xl text-4xl font-bold md:text-5xl">
+        The Ultimate UI Library for Astro
+      </h1>
+
+      <p
+        class="text-shadow-lg text-foreground/80 max-w-2xl text-base font-normal md:text-xl"
+      >
+        Supercharge your Astro projects with a robust set of accessible,
+        customizable, and performance-optimized components.
+      </p>
+
+      <Button
+        href="/getting-started/"
+        class="bg-background text-foreground hover:bg-background/80 border-none transition-transform duration-200 ease-in-out hover:scale-105"
+        size="md"
+      >
+        Get Started <ArrowRightIcon />
+      </Button>
+    </div>
+  </div>
+</div>

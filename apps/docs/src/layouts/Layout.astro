@@ -1,4 +1,5 @@
 ---
+import GradientBackground from "@/components/GradientBackground.astro";
 import Header from "@/components/sections/Header.astro";
 import "@/styles/global.css";
 
@@ -14,7 +15,12 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link
+      rel="icon"
+      href="public/favicon.svg"
+      sizes="any"
+      type="image/svg+xml"
+    />
     <meta name="generator" content={Astro.generator} />
 
     <meta property="og:type" content="article" />
@@ -41,8 +47,11 @@ const { title } = Astro.props;
 
     <title>{title}</title>
   </head>
-  <body>
+  <body class="bg-background text-foreground min-h-dvh font-sans">
+    <GradientBackground />
     <Header />
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>

@@ -1,0 +1,77 @@
+---
+import { ArrowRightIcon, DiscordIcon, GitHubIcon } from "@/assets/icons";
+
+const comunnityLinks = [
+  {
+    href: "https://github.com/nsmichelj/orbitui",
+    title: "Contribute to Open Source",
+    description:
+      "Help improve OrbitUI by contributing components, fixes, and features to our GitHub repository.",
+    icon: GitHubIcon,
+    actionText: "Contribute",
+  },
+  {
+    href: "https://discord.gg/JZHt3dNeJm",
+    title: "Join the Discussion",
+    description:
+      "Join our community, discuss ideas, ask questions, and collaborate with fellow developers.",
+    icon: DiscordIcon,
+    actionText: "Join Now",
+  },
+];
+---
+
+<section class="border-border border-b border-dashed">
+  <div class="border-border mx-auto max-w-6xl border-x border-dashed px-3">
+    <div
+      class="flex flex-col items-center justify-center gap-6 py-20 text-center"
+    >
+      <div class="space-y-2">
+        <h2
+          class="text-primary border-border inline-block border border-dashed px-3 py-1 text-sm uppercase tracking-wider"
+        >
+          Community
+        </h2>
+        <h3 class="text-shadow-lg max-w-3xl text-4xl font-bold md:text-5xl">
+          Join the OrbitUI community
+        </h3>
+      </div>
+
+      <p
+        class="text-shadow-lg text-foreground/80 max-w-2xl text-base font-normal md:text-xl"
+      >
+        Get instant support, share ideas, and connect with other Astro
+        developers.
+      </p>
+
+      <div
+        class="mx-auto flex max-w-md flex-col items-center justify-between gap-4 md:max-w-2xl md:flex-row"
+      >
+        {
+          comunnityLinks.map((link) => (
+            <a
+              href={link.href}
+              class="bg-background/30 group flex flex-col items-start gap-2 overflow-hidden rounded-2xl p-4 text-start backdrop-blur-2xl transition-transform duration-300 ease-in-out hover:-translate-y-1 sm:col-span-6 md:col-span-2"
+            >
+              <div class="mb-6 inline-flex rounded-lg bg-white/10 p-3 text-white/80 transition-colors group-hover:bg-white/15">
+                <link.icon class="h-6 w-6" />
+              </div>
+
+              <h3 class="text-foreground text-xl font-semibold">
+                {link.title}
+              </h3>
+              <p class="text-muted-foreground text-sm leading-relaxed">
+                {link.description}
+              </p>
+
+              <div class="flex items-center gap-2 text-sm font-medium text-white/70 transition-colors group-hover:text-white">
+                <span>{link.actionText}</span>
+                <ArrowRightIcon class="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

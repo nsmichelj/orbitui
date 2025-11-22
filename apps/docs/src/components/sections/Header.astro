@@ -1,12 +1,6 @@
 ---
-import {
-  BrandDiscordIcon,
-  BrandGitHubIcon,
-  SparklesIcon,
-} from "@/assets/icons";
-
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
+import { DiscordIcon, GitHubIcon } from "@/assets/icons";
+import OrbitUI from "@/assets/logo/orbitui_logo_dark.svg";
 
 const links = [
   {
@@ -18,59 +12,66 @@ const links = [
     href: "/components/",
   },
 ];
+
+const socialLinks = [
+  {
+    name: "GitHub",
+    href: "https://github.com/nsmichelj/orbitui",
+    icon: GitHubIcon,
+  },
+  {
+    name: "Discord",
+    href: "https://discord.gg/JZHt3dNeJm",
+    icon: DiscordIcon,
+  },
+];
 ---
 
-<Alert
-  class="from-primary/20 via-primary/10 to-primary/20 border-primary/30 w-full rounded-none border-0 border-b bg-gradient-to-r backdrop-blur-sm"
+<header
+  class="border-border bg-background/10 z-(--header-z-index) sticky left-0 top-0 w-full border-b border-dashed backdrop-blur-md"
 >
-  <AlertDescription
-    class="flex flex-col items-center justify-center gap-1 text-center text-base font-medium sm:flex-row"
+  <div
+    class="border-border mx-auto flex max-w-6xl items-center justify-between border-x border-dashed px-3 py-4"
   >
-    <SparklesIcon class="text-primary" />
+    <div class="flex flex-row items-center gap-6">
+      <a href="/">
+        <OrbitUI class="h-6 w-auto" />
+      </a>
 
-    OrbitUI is here: New components and enhancements await!
-  </AlertDescription>
-</Alert>
-
-<div
-  class="border-primary/5 flex items-center justify-center border-b backdrop-blur-sm"
->
-  <div class="container flex items-center justify-between p-4">
-    <a href="/">
-      <img src="/orbitui.png" alt="orbitui logo" class="h-6" />
-    </a>
-
-    <div class="hidden items-center gap-4 md:flex">
-      {
-        links.map((link) => (
-          <Button variant="link" size="lg" class="p-0" href={link.href}>
-            {link.name}
-          </Button>
-        ))
-      }
+      <nav>
+        <ul class="flex gap-4">
+          {
+            links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-foreground/80 hover:text-foreground font-semibold transition-colors duration-200"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
     </div>
 
-    <div class="flex items-center gap-4">
-      <Button
-        variant="link"
-        class="p-0 [&_svg]:size-5"
-        href="https://github.com/nsmichelj/orbitui"
-        target="_blank"
-      >
-        <BrandGitHubIcon />
-      </Button>
-      <Button
-        variant="link"
-        class="p-0 [&_svg]:size-5"
-        href="https://discord.gg/JZHt3dNeJm"
-        target="_blank"
-      >
-        <BrandDiscordIcon />
-      </Button>
-
-      <Button rounded="full" variant="outline" href="/getting-started/">
-        Get Started
-      </Button>
-    </div>
+    <nav>
+      <ul class="flex gap-2">
+        {
+          socialLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-foreground/80 hover:text-foreground font-semibold transition-colors duration-200"
+                aria-label={link.name}
+              >
+                <link.icon class="size-5" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
   </div>
-</div>
+</header>

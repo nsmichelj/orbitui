@@ -1,0 +1,61 @@
+---
+import { ArrowRightIcon, GitHubIcon } from "@/assets/icons";
+import { Button } from "../ui/button";
+---
+
+<section
+  class="text-foreground border-border relative border-b border-dashed py-24 md:py-32"
+>
+  <div
+    class="pointer-events-none absolute inset-0 z-0 opacity-40 blur-3xl"
+    aria-hidden="true"
+  >
+    <div class="absolute inset-0 bg-black"></div>
+  </div>
+
+  <div
+    class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+  >
+  </div>
+
+  <div
+    class="relative flex flex-col items-center justify-center gap-6 text-center"
+  >
+    <div class="space-y-2">
+      <h2
+        class="text-primary border-border inline-block border border-dashed px-3 py-1 text-sm uppercase tracking-wider"
+      >
+        Start Now
+      </h2>
+      <h3 class="mb-4 text-4xl font-bold tracking-tight md:text-5xl">
+        Start building with OrbitUI
+      </h3>
+    </div>
+
+    <p
+      class="text-shadow-lg text-foreground/80 max-w-2xl text-base font-normal md:text-xl"
+    >
+      Ready-to-use, modular components that let you focus on what truly matters.
+    </p>
+
+    <div
+      class="flex flex-col justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+    >
+      <Button
+        href="/getting-started/"
+        class="bg-background border-border/30 hover:border-border/40 text-foreground hover:bg-background/80 border transition-transform duration-200 ease-in-out hover:scale-105"
+        size="md"
+      >
+        Get Started Now<ArrowRightIcon />
+      </Button>
+
+      <Button
+        href="/getting-started/"
+        class="bg-background border-border/30 hover:border-border/40 text-foreground hover:bg-background/80 border transition-transform duration-200 ease-in-out hover:scale-105"
+        size="md"
+      >
+        <GitHubIcon /> GitHub
+      </Button>
+    </div>
+  </div>
+</section>
