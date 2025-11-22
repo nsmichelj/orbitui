@@ -1,11 +1,13 @@
+import ArrowRightIcon from "./arrow-right.svg";
 import BlocksIcon from "./blocks.svg";
-import BrandGitHubIcon from "./brand-github.svg";
-import BrandDiscordIcon from "./discord.svg";
+import GitHubIcon from "./brand-github.svg";
 import CircleCheckIcon from "./circle-check.svg";
 import CircleIcon from "./circle.svg";
 import ClockIcon from "./clock.svg";
 import CubeIcon from "./cube.svg";
+import DiscordIcon from "./discord.svg";
 import HeartHandshakeIcon from "./heart-handshake.svg";
+import HeartIcon from "./heart.svg";
 import PackageOffIcon from "./package-off.svg";
 import PalleteIcon from "./palette.svg";
 import RocketIcon from "./rocket.svg";
@@ -15,14 +17,16 @@ import StartIcon from "./star.svg";
 import TerminalIcon from "./terminal-2.svg";
 
 export {
+  ArrowRightIcon,
   BlocksIcon,
-  BrandDiscordIcon,
-  BrandGitHubIcon,
   CircleCheckIcon,
   CircleIcon,
   ClockIcon,
   CubeIcon,
+  DiscordIcon,
+  GitHubIcon,
   HeartHandshakeIcon,
+  HeartIcon,
   PackageOffIcon,
   PalleteIcon,
   RocketIcon,
