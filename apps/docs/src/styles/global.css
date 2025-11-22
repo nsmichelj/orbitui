@@ -20,6 +20,8 @@
   --color-input-border: var(--input-border);
   --color-input-placeholder: var(--input-placeholder);
 
+  --header-z-index: 1000;
+
   --animate-marquee-horizontal: marquee-horizontal var(--duration) infinite
     linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) infinite linear;
