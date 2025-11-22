@@ -1,14 +1,10 @@
 // @ts-check
+import starlight from "@astrojs/starlight";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
-import starlight from "@astrojs/starlight";
-
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()],
-  },
-
+  vite: { plugins: [tailwindcss()] },
   integrations: [
     starlight({
       title: "OrbitUI Component Library",
@@ -47,7 +43,7 @@ export default defineConfig({
           tag: "meta",
           attrs: {
             property: "og:image",
-            content: "/hero.png",
+            content: "/social-banner.png",
           },
         },
         {
