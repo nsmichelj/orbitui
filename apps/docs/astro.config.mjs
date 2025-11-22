@@ -17,8 +17,8 @@ export default defineConfig({
         "A modular, customizable component library to accelerate your Astro projects with pre-built components powered by Tailwind CSS.",
       customCss: ["./src/styles/starlight.css"],
       logo: {
-        dark: "./src/assets/logo/orbitui_dark.png",
-        light: "./src/assets/logo/orbitui_light.png",
+        dark: "./src/assets/logo/orbitui_logo_dark.svg",
+        light: "./src/assets/logo/orbitui_logo_light.svg",
         replacesTitle: true,
         alt: "OrbitUI Logo",
       },
@@ -38,7 +38,8 @@ export default defineConfig({
         baseUrl: "https://github.com/nsmichelj/orbitui/edit/main/apps/docs/",
       },
       components: {
-        TwoColumnContent: "./src/components/overrides/TwoColumnContent/TwoColumnContent.astro",
+        TwoColumnContent:
+          "./src/components/overrides/TwoColumnContent/TwoColumnContent.astro",
         Pagination: "./src/components/overrides/pagination/Pagination.astro",
       },
       head: [
