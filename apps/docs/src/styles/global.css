@@ -51,9 +51,9 @@
     --surface: hsl(0 0% 100%);
     --foreground: hsl(222.2 84% 4.9%);
 
-    --primary-color: hsl(160 84% 35%);
+    --primary-color: hsl(172, 75%, 22%);
     --primary-foreground: hsl(210 40% 98%);
-    --primary-accent: hsl(160 84% 30%);
+    --primary-accent: hsl(172, 75%, 16%);
 
     --secondary-color: hsl(210 40% 95%);
     --secondary-foreground: hsl(215.4 16.3% 46.9%);
@@ -75,9 +75,9 @@
     --surface: hsl(210 30% 10%);
     --foreground: hsl(0 0% 98%);
 
-    --primary-color: hsl(160 100% 60%);
+    --primary-color: hsl(170, 70%, 50%);
     --primary-foreground: hsl(210 30% 8%);
-    --primary-accent: hsl(160 100% 55%);
+    --primary-accent: hsl(170, 70%, 44%);
 
     --secondary-color: hsl(210 30% 15%);
     --secondary-foreground: hsl(0 0% 63.9%);

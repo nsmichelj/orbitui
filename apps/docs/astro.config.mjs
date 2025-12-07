@@ -37,6 +37,8 @@ export default defineConfig({
         TwoColumnContent:
           "./src/components/overrides/TwoColumnContent/TwoColumnContent.astro",
         Pagination: "./src/components/overrides/pagination/Pagination.astro",
+        ContentPanel:
+          "./src/components/overrides/content-panel/ContentPanel.astro",
       },
       head: [
         {
