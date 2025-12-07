@@ -123,6 +123,22 @@
     {
       "name": "marquee",
       "version": "0.0.1"
+    },
+    {
+      "name": "ambient-image",
+      "version": "0.0.1"
+    },
+    {
+      "name": "button-group",
+      "version": "0.0.1"
+    },
+    {
+      "name": "diff",
+      "version": "0.0.1"
+    },
+    {
+      "name": "loader",
+      "version": "0.0.1"
     }
   ]
 }
