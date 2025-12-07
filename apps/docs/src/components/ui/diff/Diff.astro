@@ -1,0 +1,55 @@
+---
+import { cn } from "@/utils/cn";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"figure"> {}
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<figure
+  data-diff
+  class={cn(
+    "diff relative grid aspect-video w-full overflow-hidden select-none grid-cols-[auto_1fr] grid-rows-[1fr_1.8rem_1fr]",
+    className,
+  )}
+  style={{
+    "container-type": "inline-size",
+  }}
+  tabindex="0"
+  {...attrs}
+>
+  <slot />
+  <div
+    data-resize
+    class="bg-background relative isolate z-2 col-start-1 row-start-2 h-3 w-[50cqi] max-w-[calc(100cqi-1rem)] min-w-4 cursor-ew-resize resize-x overflow-hidden opacity-0"
+    style={{
+      "clip-path": "inset(calc(100% - 0.75rem) 0 0 calc(100% - 0.75rem))",
+      "transform-origin": "100% 100%",
+      transition: "min-width 0.3s ease-out, max-width 0.3s ease-out",
+      transform: "scaleY(5) translate(0.32rem, 50%)",
+    }}
+  >
+  </div>
+</figure>
+
+<style is:global>
+  [data-diff-item]:nth-child(2)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    right: 1px;
+    translate: 50% -50%;
+    width: 1rem;
+    height: 1.8rem;
+    background: var(--color-background);
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 25%;
+  }
+
+  [data-diff-item]:nth-of-type(n + 3) {
+    display: none;
+  }
+</style>

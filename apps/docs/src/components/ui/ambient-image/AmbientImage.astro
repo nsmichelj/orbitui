@@ -1,0 +1,70 @@
+---
+import { cn } from "@/utils/cn";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props
+  extends HTMLAttributes<"figure">,
+    Pick<
+      HTMLAttributes<"img">,
+      "src" | "alt" | "width" | "height" | "loading"
+    > {
+  blur?: number;
+  saturate?: number;
+  contrast?: number;
+  brightness?: number;
+  opacity?: number;
+}
+
+const {
+  class: className,
+  src,
+  alt,
+  width,
+  height,
+  loading,
+  blur = 15,
+  saturate = 150,
+  contrast = 100,
+  brightness = 100,
+  opacity = 80,
+  ...attrs
+} = Astro.props;
+---
+
+<figure
+  class={cn("relative z-1 inline-block rounded-md", className)}
+  style={{
+    "--blur": `${blur}px`,
+    "--saturate": `${saturate}%`,
+    "--contrast": `${contrast}%`,
+    "--brightness": `${brightness}%`,
+    "--opacity": `${opacity}%`,
+  }}
+  {...attrs}
+>
+  <div
+    class={cn(
+      "absolute inset-0 z-[-1] blur-(--blur) saturate-(--saturate) contrast-(--contrast) brightness-(--brightness) opacity-(--opacity)",
+    )}
+    aria-hidden="true"
+  >
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      class="h-full w-full rounded-[inherit] object-cover"
+    />
+  </div>
+
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    class="relative block rounded-[inherit] object-cover"
+  />
+
+  <slot />
+</figure>

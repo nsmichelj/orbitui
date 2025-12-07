@@ -1,0 +1,150 @@
+---
+title: Loader
+description: A component used to display animated loading indicators while content is being fetched or processed.
+---
+
+import PreviewCard from "@/components/PreviewCard.astro";
+import { Loader } from "@/components/ui/loader";
+import { TabItem, Tabs } from "@astrojs/starlight/components";
+
+The Loader component provides an easy way to display a visually appealing, animated loading indicator to users, improving the perceived performance of your application.
+
+## Installation
+
+Since OrbitUI components are copied directly into your project, you'll add the Loader component using the OrbitUI CLI:
+
+```bash
+npx orbitkit@latest add loader
+```
+
+## Usage
+
+Import the `Loader` component and use it wherever you need a loading indicator. You can customize its appearance using the `type` and `class` props.
+
+<Tabs>
+  <TabItem label="Preview">
+    <PreviewCard>
+      <div class="mx-auto">
+        <Loader />
+      </div>
+    </PreviewCard>
+  </TabItem>
+  <TabItem label="Code">
+    ```astro
+    ---
+    // index.astro
+    import { Loader } from "@/components/ui/loader";
+    ---
+
+    <div class="mx-auto">
+      <Loader />
+    </div>
+    ```
+
+  </TabItem>
+</Tabs>
+
+The `Loader` component includes a comprehensive set of 46 animated icons. You can see all available types in the source code definition of `LoaderType` within your project.
+
+## Examples
+
+### Custom Type
+
+Using the different type.
+
+<Tabs>
+  <TabItem label="Preview">
+    <PreviewCard>
+      <div class="mx-auto">
+        <Loader type="blocks-scale" />
+      </div>
+    </PreviewCard>
+  </TabItem>
+  <TabItem label="Code">
+    ```astro
+    ---
+    // index.astro
+    import { Loader } from "@/components/ui/loader";
+    ---
+
+    <div class="mx-auto">
+      <Loader type="blocks-scale" />
+    </div>
+    ```
+
+  </TabItem>
+</Tabs>
+
+### Custom Color
+
+specific Tailwind color class
+
+<Tabs>
+  <TabItem label="Preview">
+    <PreviewCard>
+      <div class="mx-auto">
+        <Loader class="text-blue-500" type="3-dots-bounce" />
+      </div>
+    </PreviewCard>
+  </TabItem>
+  <TabItem label="Code">
+    ```astro
+    ---
+    // index.astro
+    import { Loader } from "@/components/ui/loader";
+    ---
+
+    <div class="mx-auto">
+      <Loader class="text-blue-400" type="3-dots-bounce" />
+    </div>
+    ```
+
+  </TabItem>
+</Tabs>
+
+### Custom Size
+
+Setting a larger size.
+
+<Tabs>
+  <TabItem label="Preview">
+    <PreviewCard>
+      <div class="mx-auto">
+        <Loader class="text-blue-400" type="3-dots-bounce" size={128} />
+      </div>
+    </PreviewCard>
+  </TabItem>
+  <TabItem label="Code">
+    ```astro
+    ---
+    // index.astro
+    import { Loader } from "@/components/ui/loader";
+    ---
+
+    <div class="mx-auto">
+      <Loader class="text-blue-400" type="3-dots-bounce" size={128} />
+    </div>
+    ```
+
+  </TabItem>
+</Tabs>
+
+## Props
+
+### Loader
+
+The `Loader` component accepts the following props for customization. It is rendered as an inline SVG element.
+
+| Prop   | Type                                    | Default    |
+| ------ | --------------------------------------- | ---------- |
+| `type` | `LoaderType (Union of 46 string types)` | `180-ring` |
+| `size` | `number`                                | `32`       |
+
+- `type`: Specifies the specific animated SVG icon to render.
+- `size`: Sets the width and height of the SVG element in pixels.
+
+This component accepts all the standard HTML attributes that a `<svg>` element would.
+
+## Credits
+
+The SVG animated icons used in the OrbitUI Loader component are based on the excellent work by <a href="https://github.com/n3r4zzurr0/svg-spinners" target="_blanck">Utkarsh Verma</a>.

@@ -1,0 +1,205 @@
+---
+title: Button Group
+description: Groups multiple interactive elements (buttons, inputs, selects) to form a single cohesive component.
+---
+
+import PreviewCard from "@/components/PreviewCard.astro";
+import { Button } from "@/components/ui/button";
+import { ButtonGroup } from "@/components/ui/button-group";
+import { Input } from "@/components/ui/input";
+import { Option, Select } from "@/components/ui/select";
+import { TabItem, Tabs } from "@astrojs/starlight/components";
+
+The `ButtonGroup` component is a flexible container designed to horizontally or vertically group adjacent interactive elements, such as `Button`, `Input`, and `Select`. By wrapping these items, it removes redundant borders and applies unified corner styling, creating the appearance of a single, composite control.
+
+## Installation
+
+Since OrbitUI components are copied directly into your project, you'll add the ButtonGroup component using the OrbitUI CLI:
+
+```bash
+npx orbitkit@latest add button-group
+```
+
+## Usage
+
+Import the `ButtonGroup` component and wrap the interactive elements you want to group.
+
+<Tabs>
+  <TabItem label="Preview">
+    <PreviewCard>
+      <ButtonGroup>
+        <Button variant="outline"> Left </Button>
+        <Button variant="outline"> Middle </Button>
+        <Button variant="outline"> Right </Button>
+      </ButtonGroup>
+    </PreviewCard>
+  </TabItem>
+  <TabItem label="Code">
+    ```astro
+    ---
+    // index.astro
+    import { Button } from "@/components/ui/button";
+    import { ButtonGroup } from "@/components/ui/button-group";
+    ---
+
+    <ButtonGroup>
+      <Button variant="outline"> Left </Button>
+      <Button variant="outline"> Middle </Button>
+      <Button variant="outline"> Right </Button>
+    </ButtonGroup>
+    ```
+
+  </TabItem>
+</Tabs>
+
+## Examples
+
+### Horizontal Orientation
+
+To stack elements vertically, use the `orientation="horizontal"` prop.
+
+<Tabs>
+  <TabItem label="Preview">
+    <PreviewCard>
+      <ButtonGroup orientation="horizontal">
+        <Button variant="outline"> Top </Button>
+        <Button variant="outline"> Middle </Button>
+        <Button variant="outline"> Bottom </Button>
+      </ButtonGroup>
+    </PreviewCard>
+  </TabItem>
+  <TabItem label="Code">
+    ```astro
+    ---
+    // index.astro
+    import { Button } from "@/components/ui/button";
+    import { ButtonGroup } from "@/components/ui/button-group";
+    ---
+
+    <ButtonGroup orientation="horizontal">
+      <Button variant="outline"> Top </Button>
+      <Button variant="outline"> Middle </Button>
+      <Button variant="outline"> Bottom </Button>
+    </ButtonGroup>
+    ```
+
+  </TabItem>
+</Tabs>
+
+### Nested
+
+Nest `<ButtonGroup>` components to create button groups with spacing.
+
+<Tabs>
+  <TabItem label="Preview">
+    <PreviewCard>
+      <ButtonGroup>
+        <ButtonGroup>
+          <Button variant="outline">1</Button>
+          <Button variant="outline">2</Button>
+          <Button variant="outline">3</Button>
+          <Button variant="outline">4</Button>
+          <Button variant="outline">5</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button variant="outline" aria-label="Previous">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">baseline-arrow-back</title><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8l8 8l1.41-1.41L7.83 13H20z"/></svg>
+          </Button>
+          <Button variant="outline" aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">baseline-arrow-forward</title><path fill="currentColor" d="m12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+          </Button>
+        </ButtonGroup>
+      </ButtonGroup>
+    </PreviewCard>
+
+  </TabItem>
+  <TabItem label="Code">
+    ```astro
+    ---
+    // index.astro
+    import { Button } from "@/components/ui/button";
+    import { ButtonGroup } from "@/components/ui/button-group";
+    ---
+    <ButtonGroup>
+        <ButtonGroup>
+          <Button variant="outline">1</Button>
+          <Button variant="outline">2</Button>
+          <Button variant="outline">3</Button>
+          <Button variant="outline">4</Button>
+          <Button variant="outline">5</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button variant="outline" aria-label="Previous">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">baseline-arrow-back</title><path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8l8 8l1.41-1.41L7.83 13H20z"/></svg>
+          </Button>
+          <Button variant="outline" aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">baseline-arrow-forward</title><path fill="currentColor" d="m12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+          </Button>
+        </ButtonGroup>
+      </ButtonGroup>
+    ```
+
+  </TabItem>
+</Tabs>
+
+### Button and other elements
+
+Wrap an Input ans select component with buttons.
+
+<Tabs>
+  <TabItem label="Preview">
+    <PreviewCard>
+      <ButtonGroup>
+        <ButtonGroup>
+          <Select class="mb-0 w-[70px]">
+            <Option> $ </Option>
+            <Option> € </Option>
+          </Select>
+          <Input placeholder="10.00" pattern="[0-9]*" class="mb-0" />
+        </ButtonGroup>
+
+        <ButtonGroup>
+          <Button aria-label="Send"> Send </Button>
+        </ButtonGroup>
+      </ButtonGroup>
+    </PreviewCard>
+
+  </TabItem>
+  <TabItem label="Code">
+    ```astro
+    ---
+    // index.astro
+    import { Button } from "@/components/ui/button";
+    import { ButtonGroup } from "@/components/ui/button-group";
+    import { Option, Select } from "@/components/ui/select";
+    import { Input } from "@/components/ui/input";
+    ---
+    <ButtonGroup>
+      <ButtonGroup>
+        <Select class="mb-0 w-[70px]">
+          <Option> $ </Option>
+          <Option> € </Option>
+        </Select>
+        <Input placeholder="10.00" pattern="[0-9]*" class="mb-0" />
+      </ButtonGroup>
+  
+      <ButtonGroup>
+        <Button aria-label="Send"> Send </Button>
+      </ButtonGroup>
+    </ButtonGroup>
+    ```
+
+  </TabItem>
+</Tabs>
+
+## Props
+
+### ButtonGroup
+
+The ButtonGroup component accepts standard HTML attributes for `<div>` and the `orientation` property to control the direction of the elements.
+
+| Prop          | Type                     | Default    |
+| ------------- | ------------------------ | ---------- |
+| `orientation` | `vertical`, `horizontal` | `vertical` |
+
+- `orientation`: Defines whether elements are grouped in a row (vertical) or a column (horizontal).

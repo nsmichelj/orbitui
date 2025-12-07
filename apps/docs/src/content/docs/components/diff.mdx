@@ -1,0 +1,189 @@
+---
+title: Diff
+description: A container component used to visually compare two distinct pieces of content.
+---
+
+import PreviewCard from "@/components/PreviewCard.astro";
+import { Diff, DiffItem } from "@/components/ui/diff";
+import { TabItem, Tabs } from "@astrojs/starlight/components";
+
+The `Diff` component provides a visual comparison tool that allows users to slide a divider left and right to reveal the difference between two pieces of content displayed in the same area.
+
+## Installation
+
+Since OrbitUI components are copied directly into your project, you'll add the Diff component using the OrbitUI CLI:
+
+```bash
+npx orbitkit@latest add diff
+```
+
+## Usage
+
+Import the `Diff` and `DiffItem` components. The Diff component must contain exactly two DiffItem children.
+
+<Tabs>
+  <TabItem label="Preview">
+    <PreviewCard>
+      <div class="mx-auto w-[800px]">
+        <Diff>
+          <DiffItem>
+            <img
+              alt="Green Hill Near the Body of Water"
+              src="https://images.pexels.com/photos/462162/pexels-photo-462162.jpeg"
+            />
+          </DiffItem>
+          <DiffItem>
+            <img
+              alt="Aerial photograph of the beach shore"
+              src="https://images.pexels.com/photos/1094551/pexels-photo-1094551.jpeg"
+            />
+          </DiffItem>
+        </Diff>
+      </div>
+    </PreviewCard>
+  </TabItem>
+  <TabItem label="Code">
+    ```astro
+    ---
+    // index.astro
+    import { Diff, DiffItem } from "@/components/ui/diff";
+    ---
+
+    <div class="mx-auto w-[800px]">
+      <Diff>
+        <DiffItem>
+          <img
+            alt="Green Hill Near the Body of Water"
+            src="https://images.pexels.com/photos/462162/pexels-photo-462162.jpeg"
+          />
+        </DiffItem>
+        <DiffItem>
+          <img
+            alt="Aerial photograph of the beach shore"
+            src="https://images.pexels.com/photos/1094551/pexels-photo-1094551.jpeg"
+          />
+        </DiffItem>
+      </Diff>
+    </div>
+    ```
+
+  </TabItem>
+</Tabs>
+
+## Examples
+
+### Visual Effects
+
+Compares the same image with a visual filter applied to one of the sides (e.g., a blur effect).
+
+<Tabs>
+  <TabItem label="Preview">
+    <PreviewCard>
+      <div class="mx-auto w-[800px]">
+        <Diff>
+          <DiffItem>
+            <img src="https://images.pexels.com/photos/7919/pexels-photo.jpg" />
+          </DiffItem>
+          <DiffItem>
+            <img
+              src="https://images.pexels.com/photos/7919/pexels-photo.jpg"
+              class="blur-md"
+            />
+          </DiffItem>
+        </Diff>
+      </div>
+    </PreviewCard>
+  </TabItem>
+  <TabItem label="Code">
+    ```astro
+    ---
+    // index.astro
+    import { Diff, DiffItem } from "@/components/ui/diff";
+    ---
+
+    <div class="mx-auto w-[800px]">
+      <Diff>
+        <DiffItem>
+          <img src="https://images.pexels.com/photos/7919/pexels-photo.jpg" />
+        </DiffItem>
+        <DiffItem>
+          <img
+            src="https://images.pexels.com/photos/7919/pexels-photo.jpg"
+            class="blur-md"
+          />
+        </DiffItem>
+      </Diff>
+    </div>
+    ```
+
+  </TabItem>
+</Tabs>
+
+### Arbitrary Content
+
+The component can compare any block-level content, not just images (e.g., comparing background colors or styles on text elements).
+
+<Tabs>
+  <TabItem label="Preview">
+    <PreviewCard>
+      <div class="mx-auto w-[800px]">
+        <Diff>
+          <DiffItem>
+            <div
+              class="grid place-content-center bg-[#11786b]/30 text-7xl font-black sm:text-9xl"
+            >
+              OrbitUI
+            </div>
+          </DiffItem>
+          <DiffItem>
+            <div
+              class="grid place-content-center bg-[#115378]/30 text-7xl font-black sm:text-9xl"
+            >
+              OrbitUI
+            </div>
+          </DiffItem>
+        </Diff>
+      </div>
+    </PreviewCard>
+  </TabItem>
+  <TabItem label="Code">
+    ```astro
+    ---
+    // index.astro
+    import { Diff, DiffItem } from "@/components/ui/diff";
+    ---
+
+    <div class="mx-auto w-[800px]">
+      <Diff>
+        <DiffItem>
+          <div
+            class="grid place-content-center bg-[#11786b]/30 text-7xl font-black sm:text-9xl"
+          >
+            OrbitUI
+          </div>
+        </DiffItem>
+        <DiffItem>
+          <div
+            class="grid place-content-center bg-[#115378]/30 text-7xl font-black sm:text-9xl"
+          >
+            OrbitUI
+          </div>
+        </DiffItem>
+      </Diff>
+    </div>
+    ```
+
+  </TabItem>
+</Tabs>
+
+## Props
+
+### Diff
+
+The `Diff` component acts as the main container for the comparison tool. This component accepts all the standard HTML attributes that a `<figure>` element would.
+
+### DiffItem
+
+The `DiffItem` component is the wrapper for the content on one side of the comparison. You must use exactly two `DiffItem` components inside Diff.
+
+This component accepts all the standard HTML attributes that a `<div>` element would.
