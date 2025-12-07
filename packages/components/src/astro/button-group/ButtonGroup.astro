@@ -1,0 +1,21 @@
+---
+import { cn } from "@/utils/cn";
+import type { HTMLAttributes } from "astro/types";
+import type { VariantProps } from "class-variance-authority";
+import { buttonGroupVariants } from "./buttonGroupVariants";
+
+interface Props
+  extends HTMLAttributes<"div">,
+    VariantProps<typeof buttonGroupVariants> {}
+
+const { orientation, ...attrs } = Astro.props;
+---
+
+<div
+  role="group"
+  data-button-group
+  class={cn(buttonGroupVariants({ orientation }))}
+  {...attrs}
+>
+  <slot />
+</div>

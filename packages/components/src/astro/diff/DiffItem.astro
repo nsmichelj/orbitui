@@ -1,0 +1,21 @@
+---
+import { cn } from "@/utils/cn";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {}
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<div
+  data-diff-item
+  class={cn(
+    "first:border-background relative col-start-1 row-[1/span_3] *:pointer-events-none *:absolute *:inset-0 *:h-full *:w-[100cqi] *:max-w-none *:object-cover *:object-center first:z-1 first:overflow-hidden first:border-e-2 first:border-solid",
+    className,
+  )}
+  role="img"
+  tabindex="0"
+  {...attrs}
+>
+  <slot />
+</div>

@@ -1,0 +1,16 @@
+---
+import { cn } from "@/utils/cn";
+import type { HTMLAttributes } from "astro/types";
+import { loaders, type LoaderType } from "./loaders";
+
+interface Props extends HTMLAttributes<"svg"> {
+  type?: LoaderType;
+  size?: number;
+}
+
+const { class: className, type, size = 32, ...attrs } = Astro.props;
+
+const LoaderIcon = loaders[type || "180-ring"];
+---
+
+<LoaderIcon class={cn(className)} width={size} height={size} {...attrs} />
