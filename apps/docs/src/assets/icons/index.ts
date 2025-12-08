@@ -6,6 +6,7 @@ import CircleIcon from "./circle.svg";
 import ClockIcon from "./clock.svg";
 import CubeIcon from "./cube.svg";
 import DiscordIcon from "./discord.svg";
+import ExternalLink from "./external-link.svg";
 import HeartHandshakeIcon from "./heart-handshake.svg";
 import HeartIcon from "./heart.svg";
 import PackageOffIcon from "./package-off.svg";
@@ -24,6 +25,7 @@ export {
   ClockIcon,
   CubeIcon,
   DiscordIcon,
+  ExternalLink,
   GitHubIcon,
   HeartHandshakeIcon,
   HeartIcon,
