@@ -1,0 +1,39 @@
+---
+title: Portfolio Template
+description: A comprehensive, ready-to-use template page optimized for showcasing personal projects, professional experience, and contact information.
+sidebar:
+  label: Portfolio
+---
+
+import { ExternalLink, GitHubIcon } from "@/assets/icons";
+import PreviewCard from "@/components/PreviewCard.astro";
+import { Button } from "@/components/ui/button";
+import "@/styles/global.css";
+
+A minimal portfolio template designed to accelerate the development of a professional personal website. Used to showcase your skills, work experience, and projects as a developer.
+
+<img
+  src="/templates/orbitui-portfolio-template.png"
+  alt="OrbitUI Porfolio Template"
+  class="rounded-md"
+/>
+
+<div class="not-content flex w-full flex-row gap-4">
+  <Button
+    href="https://github.com/nsmichelj/orbitui-porfolio-template"
+    target="_blank"
+    class="w-full"
+  >
+    View Code
+    <GitHubIcon />
+  </Button>
+  <Button
+    href="https://orbitui-portfolio-templeate.netlify.app/"
+    target="_blank"
+    variant="outline"
+    class="w-full"
+  >
+    Live Preview
+    <ExternalLink />
+  </Button>
+</div>
