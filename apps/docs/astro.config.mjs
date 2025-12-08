@@ -30,6 +30,28 @@ export default defineConfig({
           href: "https://discord.gg/JZHt3dNeJm",
         },
       ],
+      sidebar: [
+        {
+          label: "Getting Started",
+          autogenerate: { directory: "getting-started" },
+        },
+        {
+          label: "Guides",
+          autogenerate: { directory: "guides" },
+        },
+        {
+          label: "Templates",
+          autogenerate: { directory: "templates" },
+        },
+        {
+          label: "Components",
+          autogenerate: { directory: "components" },
+        },
+        {
+          label: "Resources",
+          autogenerate: { directory: "resources" },
+        },
+      ],
       editLink: {
         baseUrl: "https://github.com/nsmichelj/orbitui/edit/main/apps/docs/",
       },
