@@ -5,7 +5,10 @@ import {
 } from "@/utils/constants";
 import { log } from "@/utils/log";
 import { mergeCSS } from "@/utils/mergeCSS";
-import { installDependencies } from "@/utils/packageManager";
+import {
+  detectPackageManager,
+  installDependencies,
+} from "@/utils/package-manager";
 import {
   CLASS_MERGE_UTIL_TEMPLATE,
   ORBIT_CONFIG_CSS_TEMPLATE,
@@ -148,15 +151,7 @@ export async function runInit(args: {
     ]);
 
     if (shouldInstall) {
-      const { pkgManager } = await inquirer.prompt([
-        {
-          type: "select",
-          name: "pkgManager",
-          message: "Which package manager would you like to use?",
-          default: "npm",
-          choices: ["npm", "pnpm", "yarn", "bun"],
-        },
-      ]);
+      const pkgManager = await detectPackageManager(workingDirectory);
 
       const spinner = ora(`Installing dependencies with ${pkgManager}`).start();
 
