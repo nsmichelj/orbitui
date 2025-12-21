@@ -78,8 +78,8 @@ importers:
   packages/cli:
     dependencies:
       '@orbitkit/components':
-        specifier: 0.4.0
-        version: 0.4.0
+        specifier: 0.5.0
+        version: 0.5.0
       chalk:
         specifier: 5.6.2
         version: 5.6.2
@@ -929,8 +929,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@orbitkit/components@0.4.0':
-    resolution: {integrity: sha512-h1j5BA5ZvA5hADRy9R9/UjYeV40Jn0lG2l2QSPywZ1J4E5IO2hGl1Q5PUc35U0OjGW8wrl1vLkF/rLza+aRMDA==}
+  '@orbitkit/components@0.5.0':
+    resolution: {integrity: sha512-3JUD1mzZJ5dIcsABHpO2QP82HCBSpLYfGK82QT2HBnYKDJrUhTgjUfd6ExgxuijMiG5inm8smuVxq6fdc0c72w==}
 
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
@@ -4148,7 +4148,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@orbitkit/components@0.4.0': {}
+  '@orbitkit/components@0.5.0': {}
 
   '@oslojs/encoding@1.1.0': {}
 
