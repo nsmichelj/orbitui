@@ -20,7 +20,7 @@ const {
 {
   backdrop && (
     <div
-      class="bg-background fixed inset-0 left-0 top-0 z-50 hidden h-dvh w-full transition-opacity duration-100 data-[state=closed]:opacity-0 data-[state=open]:opacity-80"
+      class="bg-background fixed inset-0 top-0 left-0 z-50 hidden h-dvh w-full transition-opacity duration-100 data-[state=closed]:opacity-0 data-[state=open]:opacity-80"
       aria-hidden="true"
       data-state="closed"
       data-backdrop
@@ -44,9 +44,9 @@ const {
   {
     showCloseButton && (
       <button
-        class="text-foreground hover:bg-muted absolute right-3 top-3 cursor-pointer rounded-lg p-1 transition-colors duration-150"
+        class="text-foreground hover:bg-muted absolute top-3 right-3 cursor-pointer rounded-lg p-1 transition-colors duration-150"
         aria-label="close modal"
-        data-close-modal
+        data-close
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

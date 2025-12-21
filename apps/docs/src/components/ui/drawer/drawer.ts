@@ -51,12 +51,14 @@ export class Drawer {
       this.backdrop?.addEventListener("click", () => this.closeDrawer());
       document.addEventListener("click", (e) => {
         const target = e.target as HTMLElement;
-        if (
-          this.drawer &&
-          !this.drawer.contains(target) &&
-          target !== this.trigger
-        ) {
-          this.closeDrawer();
+
+        if (this.drawer?.dataset.state !== "open") return;
+
+        const clickedOutside = !this.drawer.contains(target);
+        const clickedTrigger = this.trigger?.contains(target);
+
+        if (clickedOutside && !clickedTrigger) {
+          this.closeDrawer(false);
         }
       });
     }
@@ -78,8 +80,9 @@ export class Drawer {
     }, 0);
   }
 
-  private closeDrawer() {
-    this.setState("closed");
+  private closeDrawer(shouldReturnFocus: boolean = true) {
+    this.setState("closed", shouldReturnFocus);
+
     setTimeout(() => {
       this.backdrop?.classList.add("hidden");
       this.drawer?.classList.replace("flex", "hidden");
@@ -87,8 +90,14 @@ export class Drawer {
     }, 200);
   }
 
-  private setState(state: "open" | "closed") {
-    this.trigger?.focus();
+  private setState(
+    state: "open" | "closed",
+    shouldReturnFocus: boolean = true,
+  ) {
+    if (state === "closed" && shouldReturnFocus) {
+      this.trigger?.focus();
+    }
+
     this.drawer?.setAttribute("aria-hidden", `${state === "closed"}`);
     this.drawer?.setAttribute("data-state", state);
     this.backdrop?.setAttribute("aria-hidden", `${state === "closed"}`);

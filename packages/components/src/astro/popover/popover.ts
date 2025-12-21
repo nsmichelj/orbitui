@@ -1,5 +1,4 @@
 export class Popover {
-  // References to tooltip elements
   private dropdownMenu: HTMLElement;
   private trigger: HTMLElement | null;
   private content: HTMLElement | null;
@@ -52,12 +51,14 @@ export class Popover {
 
     document.addEventListener("click", (e) => {
       const target = e.target as HTMLElement;
-      if (
-        this.content &&
-        !this.content.contains(target) &&
-        target !== this.trigger
-      ) {
-        this.closePopover();
+
+      if (this.content?.dataset.state !== "open") return;
+
+      const clickedOutside = !this.content.contains(target);
+      const clickedTrigger = this.trigger?.contains(target);
+
+      if (clickedOutside && !clickedTrigger) {
+        this.closePopover(false);
       }
     });
 
@@ -91,15 +92,22 @@ export class Popover {
     }, 0);
   }
 
-  private closePopover() {
-    this.trigger?.focus();
-    this.setState("closed");
+  private closePopover(shouldReturnFocus: boolean = true) {
+    this.setState("closed", shouldReturnFocus);
+
     window.setTimeout(() => {
       this.content?.classList.add("hidden");
     }, 100);
   }
 
-  private setState(state: "open" | "closed") {
+  private setState(
+    state: "open" | "closed",
+    shouldReturnFocus: boolean = true,
+  ) {
+    if (state === "closed" && shouldReturnFocus) {
+      this.trigger?.focus();
+    }
+
     this.content?.setAttribute("aria-hidden", `${state === "closed"}`);
     this.content?.setAttribute("data-state", state);
   }

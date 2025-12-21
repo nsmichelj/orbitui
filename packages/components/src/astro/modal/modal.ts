@@ -49,12 +49,14 @@ export class Modal {
       this.backdrop?.addEventListener("click", () => this.closeModal());
       document.addEventListener("click", (e) => {
         const target = e.target as HTMLElement;
-        if (
-          this.modal &&
-          !this.modal.contains(target) &&
-          target !== this.trigger
-        ) {
-          this.closeModal();
+
+        if (this.modal?.dataset.state !== "open") return;
+
+        const clickedOutside = !this.modal.contains(target);
+        const clickedTrigger = this.trigger?.contains(target);
+
+        if (clickedOutside && !clickedTrigger) {
+          this.closeModal(false);
         }
       });
     }
@@ -75,8 +77,9 @@ export class Modal {
     }, 0);
   }
 
-  private closeModal() {
-    this.setState("closed");
+  private closeModal(shouldReturnFocus: boolean = true) {
+    this.setState("closed", shouldReturnFocus);
+
     setTimeout(() => {
       this.backdrop?.classList.add("hidden");
       this.modal?.classList.add("hidden");
@@ -84,8 +87,14 @@ export class Modal {
     }, 200);
   }
 
-  private setState(state: "open" | "closed") {
-    this.trigger?.focus();
+  private setState(
+    state: "open" | "closed",
+    shouldReturnFocus: boolean = true,
+  ) {
+    if (state === "closed" && shouldReturnFocus) {
+      this.trigger?.focus();
+    }
+
     this.modal?.setAttribute("aria-hidden", `${state === "closed"}`);
     this.modal?.setAttribute("data-state", state);
     this.backdrop?.setAttribute("aria-hidden", `${state === "closed"}`);
@@ -93,7 +102,7 @@ export class Modal {
   }
 
   private handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === "Escape" && this.modal!.dataset.status === "open") {
+    if (event.key === "Escape" && this.modal!.dataset.state === "open") {
       this.closeModal();
       event.preventDefault();
     }
