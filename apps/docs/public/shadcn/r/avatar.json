@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "files": [
+    {
+      "path": "../src/components/ui/avatar/Avatar.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\nimport type { VariantProps } from \"class-variance-authority\";\r\nimport { avatarVariants } from \"./avatarVariants\";\r\n\r\ninterface Props\r\n  extends HTMLAttributes<\"div\">,\r\n    VariantProps<typeof avatarVariants> {}\r\n\r\nconst { class: className, variant, bordered, ...attrs } = Astro.props;\r\n---\r\n\r\n<div {...attrs} class={cn(avatarVariants({ variant, bordered, className }))}>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/avatar/AvatarFallback.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div\r\n  {...attrs}\r\n  class={cn(\r\n    \"absolute z-0 font-medium text-gray-600 dark:text-gray-300\",\r\n    className,\r\n  )}\r\n>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/avatar/AvatarImage.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"img\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<img\r\n  {...attrs}\r\n  class={cn(\"relative aspect-square object-cover z-10\", className)}\r\n  onerror=\"this.style.display='none'\"\r\n/>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/avatar/avatarVariants.ts",
+      "content": "import { cva } from \"class-variance-authority\";\r\n\r\nconst avatarBaseClass =\r\n  \"relative inline-flex items-center justify-center size-10 overflow-hidden bg-secondary text-secondary-foreground z-10\";\r\n\r\nconst avatarVariants = cva(avatarBaseClass, {\r\n  variants: {\r\n    variant: {\r\n      circular: \"rounded-full\",\r\n      square: \"rounded-sm\",\r\n    },\r\n    bordered: {\r\n      false: null,\r\n      true: \"ring-2 ring-border\",\r\n    },\r\n  },\r\n  defaultVariants: {\r\n    variant: \"circular\",\r\n    bordered: false,\r\n  },\r\n});\r\n\r\nexport { avatarVariants };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/avatar/index.ts",
+      "content": "import Avatar from \"./Avatar.astro\";\r\nimport AvatarFallback from \"./AvatarFallback.astro\";\r\nimport AvatarImage from \"./AvatarImage.astro\";\r\nimport { avatarVariants } from \"./avatarVariants\";\r\n\r\nexport { Avatar, AvatarFallback, AvatarImage, avatarVariants };\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

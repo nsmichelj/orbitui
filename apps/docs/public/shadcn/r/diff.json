@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "diff",
+  "files": [
+    {
+      "path": "../src/components/ui/diff/Diff.astro",
+      "content": "---\nimport { cn } from \"@/lib/utils\";\nimport type { HTMLAttributes } from \"astro/types\";\n\ninterface Props extends HTMLAttributes<\"figure\"> {}\n\nconst { class: className, ...attrs } = Astro.props;\n---\n\n<figure\n  data-diff\n  class={cn(\n    \"diff relative grid aspect-video w-full overflow-hidden select-none grid-cols-[auto_1fr] grid-rows-[1fr_1.8rem_1fr]\",\n    className,\n  )}\n  style={{\n    \"container-type\": \"inline-size\",\n  }}\n  tabindex=\"0\"\n  {...attrs}\n>\n  <slot />\n  <div\n    data-resize\n    class=\"bg-background relative isolate z-2 col-start-1 row-start-2 h-3 w-[50cqi] max-w-[calc(100cqi-1rem)] min-w-4 cursor-ew-resize resize-x overflow-hidden opacity-0\"\n    style={{\n      \"clip-path\": \"inset(calc(100% - 0.75rem) 0 0 calc(100% - 0.75rem))\",\n      \"transform-origin\": \"100% 100%\",\n      transition: \"min-width 0.3s ease-out, max-width 0.3s ease-out\",\n      transform: \"scaleY(5) translate(0.32rem, 50%)\",\n    }}\n  >\n  </div>\n</figure>\n\n<style is:global>\n  [data-diff-item]:nth-child(2)::after {\n    content: \"\";\n    position: absolute;\n    top: 50%;\n    bottom: 0;\n    right: 1px;\n    translate: 50% -50%;\n    width: 1rem;\n    height: 1.8rem;\n    background: var(--color-background);\n    z-index: 2;\n    pointer-events: none;\n    border-radius: 25%;\n  }\n\n  [data-diff-item]:nth-of-type(n + 3) {\n    display: none;\n  }\n</style>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/diff/DiffItem.astro",
+      "content": "---\nimport { cn } from \"@/lib/utils\";\nimport type { HTMLAttributes } from \"astro/types\";\n\ninterface Props extends HTMLAttributes<\"div\"> {}\n\nconst { class: className, ...attrs } = Astro.props;\n---\n\n<div\n  data-diff-item\n  class={cn(\n    \"first:border-background relative col-start-1 row-[1/span_3] *:pointer-events-none *:absolute *:inset-0 *:h-full *:w-[100cqi] *:max-w-none *:object-cover *:object-center first:z-1 first:overflow-hidden first:border-e-2 first:border-solid\",\n    className,\n  )}\n  role=\"img\"\n  tabindex=\"0\"\n  {...attrs}\n>\n  <slot />\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/diff/index.ts",
+      "content": "import Diff from \"./Diff.astro\";\nimport DiffItem from \"./DiffItem.astro\";\n\nexport { Diff, DiffItem };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

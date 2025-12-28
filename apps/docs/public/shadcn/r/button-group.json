@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group",
+  "files": [
+    {
+      "path": "../src/components/ui/button-group/ButtonGroup.astro",
+      "content": "---\nimport { cn } from \"@/lib/utils\";\nimport type { HTMLAttributes } from \"astro/types\";\nimport type { VariantProps } from \"class-variance-authority\";\nimport { buttonGroupVariants } from \"./buttonGroupVariants\";\n\ninterface Props\n  extends HTMLAttributes<\"div\">,\n    VariantProps<typeof buttonGroupVariants> {}\n\nconst { orientation, ...attrs } = Astro.props;\n---\n\n<div\n  role=\"group\"\n  data-button-group\n  class={cn(buttonGroupVariants({ orientation }))}\n  {...attrs}\n>\n  <slot />\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/button-group/buttonGroupVariants.ts",
+      "content": "import { cva } from \"class-variance-authority\";\n\nconst baseClass =\n  \"inline-flex items-stretch w-fit *:focus:relative *:focus:z-10 has-[>[data-button-group]]:gap-2\";\nconst buttonGroupVariants = cva(baseClass, {\n  variants: {\n    orientation: {\n      vertical: [\n        \"flex-row\",\n        \"[&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:border-l-0\",\n        \"[&>*:not(:last-child):not(:has(+_script:last-child))]:rounded-r-none\",\n        \"[&>*:not(:first-child)>select]:rounded-l-none [&>*:not(:first-child)>select]:border-l-0\",\n        \"[&>*:not(:last-child):not(:has(+_script:last-child))>select]:rounded-r-none\",\n        \"[&>*:not(:first-child)>[data-trigger]]:rounded-l-none [&>*:not(:first-child)>[data-trigger]]:border-l-0\",\n        \"[&>*:not(:last-child):not(:has(+_script:last-child))>[data-trigger]]:rounded-r-none\",\n      ],\n\n      horizontal: [\n        \"flex-col\",\n        \"[&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0\",\n        \"[&>*:not(:last-child):not(:has(+_script:last-child))]:rounded-b-none\",\n        \"[&>*:not(:first-child)>select]:rounded-t-none [&>*:not(:first-child)>select]:border-t-0\",\n        \"[&>*:not(:last-child):not(:has(+_script:last-child))>select]:rounded-b-none\",\n        \"[&>*:not(:first-child)>[data-trigger]]:rounded-t-none [&>*:not(:first-child)>[data-trigger]]:border-t-0\",\n        \"[&>*:not(:last-child):not(:has(+_script:last-child))>[data-trigger]]:rounded-b-none\",\n      ],\n    },\n  },\n  defaultVariants: {\n    orientation: \"vertical\",\n  },\n});\n\nexport { buttonGroupVariants };\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/button-group/index.ts",
+      "content": "import ButtonGroup from \"./ButtonGroup.astro\";\n\nexport { ButtonGroup };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "files": [
+    {
+      "path": "../src/components/ui/button/Button.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\nimport { type VariantProps } from \"class-variance-authority\";\r\nimport buttonVariants from \"./buttonVariants\";\r\n\r\nexport interface Props\r\n  extends Omit<HTMLAttributes<\"button\">, \"disabled\">,\r\n    Omit<HTMLAttributes<\"a\">, \"type\">,\r\n    VariantProps<typeof buttonVariants> {}\r\n\r\nconst {\r\n  class: className,\r\n  variant,\r\n  size,\r\n  rounded,\r\n  disabled,\r\n  ...attrs\r\n} = Astro.props;\r\n\r\nconst Comp = Astro.props.href ? \"a\" : \"button\";\r\n---\r\n\r\n<Comp\r\n  {...attrs}\r\n  class={cn(buttonVariants({ variant, size, rounded, disabled, className }))}\r\n>\r\n  <slot />\r\n</Comp>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/button/index.ts",
+      "content": "import Button from \"./Button.astro\";\r\nimport buttonVariants from \"./buttonVariants\";\r\n\r\nexport { Button, buttonVariants };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/button/buttonVariants.ts",
+      "content": "import { cva } from \"class-variance-authority\";\r\n\r\nconst baseClass =\r\n  \"flex justify-center gap-1.5 items-center font-medium cursor-pointer outline-none border [&_svg]:pointer-events-none [&_svg]:shrink-0\";\r\n\r\nconst buttonVariants = cva(baseClass, {\r\n  variants: {\r\n    variant: {\r\n      default: \"border-primary text-primary-foreground bg-primary\",\r\n      outline: \"text-primary  border-primary\",\r\n      ghost: \"text-primary bg-transparent border-transparent\",\r\n      link: \"text-foreground border-transparent bg-transparent\",\r\n    },\r\n    rounded: {\r\n      none: \"rounded-none\",\r\n      xs: \"rounded-xs\",\r\n      sm: \"rounded-sm\",\r\n      md: \"rounded-md\",\r\n      lg: \"rounded-lg\",\r\n      xl: \"rounded-xl\",\r\n      full: \"rounded-full\",\r\n    },\r\n    size: {\r\n      xs: \"px-3 py-2 text-xs [&_svg]:size-3.5\",\r\n      sm: \"px-3 py-2 text-sm [&_svg]:size-4\",\r\n      md: \"px-5 py-2.5 text-sm [&_svg]:size-4\",\r\n      lg: \"px-5 py-3 text-base [&_svg]:size-[18px]\",\r\n      xl: \"px-6 py-3.5 text-base [&_svg]:size-[18px]\",\r\n    },\r\n    disabled: {\r\n      false: null,\r\n      true: [\"opacity-50\", \"cursor-not-allowed\"],\r\n    },\r\n  },\r\n  compoundVariants: [\r\n    {\r\n      variant: \"default\",\r\n      disabled: false,\r\n      class: \"hover:bg-primary-accent hover:border-primary-accent\",\r\n    },\r\n    {\r\n      variant: \"outline\",\r\n      disabled: false,\r\n      class:\r\n        \"hover:text-primary-foreground hover:bg-primary-accent hover:border-primary-accent\",\r\n    },\r\n    {\r\n      variant: \"ghost\",\r\n      disabled: false,\r\n      class:\r\n        \"hover:bg-primary hover:text-primary-foreground hover:border-primary\",\r\n    },\r\n    {\r\n      variant: \"link\",\r\n      disabled: false,\r\n      class: \"hover:text-primary\",\r\n    },\r\n  ],\r\n  defaultVariants: {\r\n    variant: \"default\",\r\n    size: \"sm\",\r\n    rounded: \"lg\",\r\n    disabled: false,\r\n  },\r\n});\r\n\r\nexport default buttonVariants;\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "files": [
+    {
+      "path": "../src/components/ui/progress/index.ts",
+      "content": "import Progress from \"./Progress.astro\";\r\nimport ProgressContainer from \"./progressContainer.astro\";\r\n\r\nexport { Progress, ProgressContainer };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/progress/Progress.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {\r\n  value?: number;\r\n}\r\n\r\nconst { class: className, value = 50 } = Astro.props;\r\n\r\nif (value < 0 || value > 100) {\r\n  throw new Error(\"Value must be between 0 and 100\");\r\n}\r\n---\r\n\r\n<div\r\n  class={cn(\r\n    \"flex items-center justify-center h-full overflow-hidden text-primary-foreground break-all bg-primary rounded-full\",\r\n    className,\r\n  )}\r\n  style={{ width: `${value}%` }}\r\n>\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/progress/progressContainer.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className } = Astro.props;\r\n---\r\n\r\n<div\r\n  class={cn(\r\n    \"flex-start flex h-2.5 w-full overflow-hidden rounded-full bg-muted font-sans text-xs font-medium\",\r\n    className,\r\n  )}\r\n>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

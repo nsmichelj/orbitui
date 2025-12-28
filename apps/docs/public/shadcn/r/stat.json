@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stat",
+  "files": [
+    {
+      "path": "../src/components/ui/stat/index.ts",
+      "content": "import Stat from \"./Stat.astro\";\r\nimport StatDescription from \"./StatDescription.astro\";\r\nimport StatTitle from \"./StatTitle.astro\";\r\nimport StatValue from \"./StatValue.astro\";\r\n\r\nexport { Stat, StatDescription, StatTitle, StatValue };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/stat/Stat.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div class={cn(\"inline-flex flex-col gap-0.5\", className)} {...attrs}>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/stat/StatDescription.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<p class={cn(\"text-sm text-foreground/70\", className)} {...attrs}>\r\n  <slot />\r\n</p>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/stat/StatTitle.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"h3\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<h3\r\n  class={cn(\r\n    \"text-sm font-medium text-foreground/80 uppercase tracking-wide\",\r\n    className,\r\n  )}\r\n  {...attrs}\r\n>\r\n  <slot />\r\n</h3>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/stat/StatValue.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<span class={cn(\"text-3xl font-bold text-foreground\", className)} {...attrs}>\r\n  <slot />\r\n</span>\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "files": [
+    {
+      "path": "../src/components/ui/label/index.ts",
+      "content": "import Label from \"./Label.astro\";\r\n\r\nexport { Label };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/label/Label.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"label\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<label\r\n  {...attrs}\r\n  class={cn(\"block text-sm font-medium text-foreground\", className)}\r\n  ><slot /></label\r\n>\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "files": [
+    {
+      "path": "../src/components/ui/skeleton/index.ts",
+      "content": "import Skeleton from \"./Skeleton.astro\";\r\nimport SkeletonItem from \"./SkeletonItem.astro\";\r\n\r\nexport { Skeleton, SkeletonItem };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/skeleton/Skeleton.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div {...attrs} role=\"status\" class={cn(\"animate-pulse\", className)}>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/skeleton/SkeletonItem.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div\r\n  {...attrs}\r\n  class={cn(\r\n    \"rounded-md bg-muted text-muted-foreground flex items-center justify-center\",\r\n    className,\r\n  )}\r\n>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "files": [
+    {
+      "path": "../src/components/ui/switch/index.ts",
+      "content": "import Switch from \"./Switch.astro\";\r\n\r\nexport { Switch };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/switch/Switch.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends Omit<HTMLAttributes<\"input\">, \"type\"> {}\r\n\r\nconst { class: className, id, ...attrs } = Astro.props;\r\n---\r\n\r\n<label class=\"inline-flex cursor-pointer items-center\" id={id}>\r\n  <input {...attrs} id={id} type=\"checkbox\" class=\"peer sr-only\" />\r\n  <span\r\n    class={cn(\r\n      \"relative w-11 h-6 bg-input-border rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\r\n      className,\r\n    )}\r\n  >\r\n  </span>\r\n</label>\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

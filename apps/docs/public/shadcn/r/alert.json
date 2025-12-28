@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "files": [
+    {
+      "path": "../src/components/ui/alert/Alert.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\nimport type { VariantProps } from \"class-variance-authority\";\r\nimport { alertVariants } from \"./alertVariants\";\r\n\r\ninterface Props\r\n  extends HTMLAttributes<\"div\">,\r\n    VariantProps<typeof alertVariants> {}\r\n\r\nconst {\r\n  class: className,\r\n  variant,\r\n  rounded,\r\n  size,\r\n  direction,\r\n  border,\r\n  ...attrs\r\n} = Astro.props;\r\n---\r\n\r\n<div\r\n  {...attrs}\r\n  role=\"alert\"\r\n  class={cn(\r\n    alertVariants({ variant, rounded, size, direction, border, className }),\r\n  )}\r\n>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/alert/AlertDescription.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"p\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<p {...attrs} class={cn(className)}><slot /></p>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/alert/AlertTitle.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"p\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<p\r\n  {...attrs}\r\n  class={cn(\"font-medium flex items-center justify-start gap-2\", className)}\r\n>\r\n  <slot />\r\n</p>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/alert/alertVariants.ts",
+      "content": "import { cva } from \"class-variance-authority\";\r\n\r\nconst baseClass = \"flex justify-start gap-y-1 gap-x-2 flex-wrap w-full\";\r\n\r\nconst alertVariants = cva(baseClass, {\r\n  variants: {\r\n    variant: {\r\n      default: \"bg-surface border-border text-foreground\",\r\n      info: \" text-blue-800 border-blue-300 bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800\",\r\n      danger:\r\n        \"text-red-800 border-red-300 bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800\",\r\n      success:\r\n        \"text-green-800 border-green-300 bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800\",\r\n      warning:\r\n        \"text-yellow-800 border-yellow-300 bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300 dark:border-yellow-800\",\r\n    },\r\n    rounded: {\r\n      none: \"rounded-none\",\r\n      xs: \"rounded-xs\",\r\n      sm: \"rounded-sm\",\r\n      md: \"rounded-md\",\r\n      lg: \"rounded-lg\",\r\n      xl: \"rounded-xl\",\r\n      full: \"rounded-full\",\r\n    },\r\n    size: {\r\n      xs: \"p-3 text-xs\",\r\n      sm: \"p-3 text-sm\",\r\n      md: \"p-4 text-sm\",\r\n      lg: \"p-5 text-base\",\r\n      xl: \"p-5 text-lg\",\r\n    },\r\n    direction: {\r\n      row: \"flex-row\",\r\n      col: \"flex-col\",\r\n    },\r\n    border: {\r\n      false: null,\r\n      true: \"border\",\r\n    },\r\n  },\r\n  defaultVariants: {\r\n    variant: \"default\",\r\n    size: \"sm\",\r\n    rounded: \"lg\",\r\n    direction: \"col\",\r\n    border: true,\r\n  },\r\n});\r\n\r\nexport { alertVariants };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/alert/index.ts",
+      "content": "import Alert from \"./Alert.astro\";\r\nimport AlertDescription from \"./AlertDescription.astro\";\r\nimport AlertTitle from \"./AlertTitle.astro\";\r\nimport { alertVariants } from \"./alertVariants\";\r\n\r\nexport { Alert, AlertDescription, AlertTitle, alertVariants };\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

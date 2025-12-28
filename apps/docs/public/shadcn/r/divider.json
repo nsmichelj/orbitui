@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "divider",
+  "files": [
+    {
+      "path": "../src/components/ui/divider/Divider.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {\r\n  orientation?: \"horizontal\" | \"vertical\";\r\n}\r\n\r\nconst { class: className, orientation = \"horizontal\", ...attrs } = Astro.props;\r\n---\r\n\r\n<div\r\n  {...attrs}\r\n  aria-orientation={orientation}\r\n  role=\"separator\"\r\n  class={cn(\r\n    \"shrink-0 bg-border\",\r\n    orientation === \"horizontal\" ? \"h-[1px] w-full\" : \"h-full w-[1px]\",\r\n    className,\r\n  )}\r\n>\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/divider/index.ts",
+      "content": "import Divider from \"./Divider.astro\";\r\n\r\nexport { Divider };\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

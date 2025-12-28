@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "files": [
+    {
+      "path": "../src/components/ui/collapsible/Collapsible.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {\r\n  isOpen?: boolean;\r\n}\r\n\r\nconst { class: className, isOpen = false, ...attrs } = Astro.props;\r\n---\r\n\r\n<div\r\n  {...attrs}\r\n  data-collapsible\r\n  data-open={isOpen}\r\n  class={cn(\"w-full\", className)}\r\n>\r\n  <slot />\r\n</div>\r\n\r\n<script>\r\n  import { Collapsible } from \"./collapsible\";\r\n\r\n  function init() {\r\n    const collapsibles =\r\n      document.querySelectorAll<HTMLElement>(\"[data-collapsible]\");\r\n    collapsibles.forEach((collapsible) => {\r\n      new Collapsible(collapsible);\r\n    });\r\n  }\r\n\r\n  init();\r\n  document.addEventListener(\"astro:page-load\", () => init());\r\n</script>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/collapsible/collapsible.ts",
+      "content": "export class Collapsible {\r\n  private wrapper: HTMLElement;\r\n  private content: HTMLElement | null;\r\n  private trigger: HTMLElement | null;\r\n\r\n  constructor(collapsibleWrapper: HTMLElement) {\r\n    this.wrapper = collapsibleWrapper;\r\n    this.content = this.wrapper.querySelector(\"[data-collapsible-content]\");\r\n    this.trigger = this.wrapper.querySelector(\"[data-trigger]\");\r\n\r\n    this.init();\r\n  }\r\n\r\n  private init() {\r\n    this.setupAccessibility();\r\n    this.setupEventListeners();\r\n  }\r\n\r\n  private setupAccessibility() {\r\n    if (!this.trigger || !this.content) return;\r\n\r\n    const id =\r\n      this.content.id ||\r\n      `collapsible-id-${Math.random().toString(36).substring(2, 9)}`;\r\n\r\n    this.content.id = id;\r\n    this.trigger.setAttribute(\"aria-controls\", id);\r\n\r\n    if (this.wrapper.dataset.open === \"true\") {\r\n      this.setState(\"open\");\r\n      this.content?.removeAttribute(\"hidden\");\r\n      const height = this.content?.scrollHeight + \"px\";\r\n      this.content!.style.maxHeight = height;\r\n    } else {\r\n      this.setState(\"closed\");\r\n      this.content?.setAttribute(\"hidden\", \"\");\r\n      this.content!.style.maxHeight = \"0px\";\r\n    }\r\n  }\r\n\r\n  private setupEventListeners() {\r\n    this.trigger?.addEventListener(\"click\", () => this.toggleCollapsible());\r\n    this.trigger?.addEventListener(\"keydown\", (e) => this.handleKeyDown(e));\r\n  }\r\n\r\n  private toggleCollapsible() {\r\n    if (this.trigger?.dataset.state === \"open\") {\r\n      this.closeCollapsible();\r\n    } else {\r\n      this.openCollapsible();\r\n    }\r\n  }\r\n\r\n  private openCollapsible() {\r\n    this.content?.removeAttribute(\"hidden\");\r\n    this.setState(\"open\");\r\n    const height = this.content?.scrollHeight + \"px\";\r\n    this.content!.style.maxHeight = height;\r\n  }\r\n\r\n  private closeCollapsible() {\r\n    this.setState(\"closed\");\r\n    this.content!.style.maxHeight = \"0px\";\r\n    window.setTimeout(() => {\r\n      this.content?.setAttribute(\"hidden\", \"\");\r\n    }, 300);\r\n  }\r\n\r\n  private setState(state: \"closed\" | \"open\") {\r\n    this.trigger?.setAttribute(\"data-state\", state);\r\n    this.trigger?.setAttribute(\"aria-expanded\", `${state === \"open\"}`);\r\n    this.content?.setAttribute(\"data-state\", state);\r\n  }\r\n\r\n  private handleKeyDown = (event: KeyboardEvent) => {\r\n    if (event.key === \"Escape\" && this.content!.dataset.status === \"open\") {\r\n      this.closeCollapsible();\r\n      event.preventDefault();\r\n    }\r\n  };\r\n}\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/collapsible/CollapsibleContent.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div\r\n  data-collapsible-content\r\n  class={cn(\r\n    \"overflow-hidden transition-all duration-300 ease-in-out\",\r\n    className,\r\n  )}\r\n  hidden\r\n  {...attrs}\r\n>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/collapsible/index.ts",
+      "content": "import Collapsible from \"./Collapsible.astro\";\r\nimport CollapsibleContent from \"./CollapsibleContent.astro\";\r\n\r\nexport { Collapsible, CollapsibleContent };\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

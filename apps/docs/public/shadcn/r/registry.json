@@ -1,0 +1,829 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "OrbitUI",
+  "homepage": "https://orbituidocs.vercel.app/",
+  "items": [
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/accordion/Accordion.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/accordion/accordion.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/accordion/AccordionItem.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/accordion/AccordionTrigger.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/accordion/AcordionContent.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/accordion/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/alert/Alert.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/alert/AlertDescription.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/alert/AlertTitle.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/alert/alertVariants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/alert/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "ambient-image",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/ambient-image/AmbientFigcaption.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/ambient-image/AmbientImage.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/ambient-image/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/avatar/Avatar.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/avatar/AvatarFallback.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/avatar/AvatarImage.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/avatar/avatarVariants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/avatar/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/badge/Badge.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/badge/badgeVariants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/badge/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/breadcrumb/Breadcrumb.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/breadcrumb/BreadcrumbEllipsis.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/breadcrumb/BreadcrumbItem.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/breadcrumb/BreadcrumbLink.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/breadcrumb/BreadcrumbList.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/breadcrumb/BreadcrumbPage.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/breadcrumb/BreadcrumbSeparator.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/breadcrumb/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/button/Button.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/button/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/button/buttonVariants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/button-group/ButtonGroup.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/button-group/buttonGroupVariants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/button-group/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/card/Card.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/card/CardContent.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/card/CardDescription.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/card/CardFooter.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/card/CardHeader.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/card/CardTitle.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/card/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/checkbox/Checkbox.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/checkbox/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/collapsible/Collapsible.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/collapsible/collapsible.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/collapsible/CollapsibleContent.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/collapsible/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "diff",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/diff/Diff.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/diff/DiffItem.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/diff/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "divider",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/divider/Divider.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/divider/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/drawer/Drawer.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/drawer/drawer.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/drawer/DrawerContent.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/drawer/DrawerDescription.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/drawer/DrawerFooter.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/drawer/DrawerHeader.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/drawer/DrawerTitle.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/drawer/drawerVariants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/drawer/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/dropdown/dropdown.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/dropdown/DropdownMenu.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/dropdown/DropdownMenuContent.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/dropdown/DropdownMenuGroup.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/dropdown/DropdownMenuItem.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/dropdown/DropdownMenuLabel.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/dropdown/DropdownMenuSeparator.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/dropdown/dropdownVariants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/dropdown/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/input/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/input/Input.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/input/inputVariants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/kbd/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/kbd/Kbd.astro",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/label/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/label/Label.astro",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/list/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/list/List.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/list/ListItem.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/list/ListVariants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "loader",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/loader/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/loader/Loader.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/loader/loaders/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/marquee/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/marquee/Marquee.astro",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "modal",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/modal/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/modal/Modal.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/modal/modal.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/modal/ModalContent.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/modal/ModalDescription.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/modal/ModalFooter.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/modal/ModalHeader.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/modal/ModalTitle.astro",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/pagination/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/pagination/Pagination.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/pagination/PaginationContent.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/pagination/PaginationEllipsis.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/pagination/PaginationItem.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/pagination/PaginationLink.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/pagination/PaginationNext.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/pagination/PaginationPrevious.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/pagination/paginationVariants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/popover/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/popover/Popover.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/popover/popover.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/popover/PopoverContent.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/popover/popoverVariants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/progress/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/progress/Progress.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/progress/progressContainer.astro",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/radio/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/radio/Radio.astro",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/scroll-progress/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/scroll-progress/ScrollProgress.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/scroll-progress/ScrollProgressBar.astro",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/select/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/select/Option.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/select/Select.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/select/selectVariants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/skeleton/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/skeleton/Skeleton.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/skeleton/SkeletonItem.astro",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stat",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/stat/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/stat/Stat.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/stat/StatDescription.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/stat/StatTitle.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/stat/StatValue.astro",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/switch/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/switch/Switch.astro",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tab",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/tab/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/tab/Tab.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/tab/tab.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/tab/TabContent.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/tab/TabList.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/tab/TabTrigger.astro",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/textarea/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/textarea/Textarea.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/textarea/TextareaVariants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/toast/assets.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/toast/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/toast/Toast.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/toast/toast.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/toast/ToastDescription.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/toast/Toaster.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/toast/ToastTitle.astro",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../src/components/ui/tooltip/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/tooltip/Tooltip.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/tooltip/tooltip.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/tooltip/TooltipContent.astro",
+          "type": "registry:ui"
+        },
+        {
+          "path": "../src/components/ui/tooltip/tooltipVariants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

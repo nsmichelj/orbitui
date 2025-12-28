@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "files": [
+    {
+      "path": "../src/components/ui/checkbox/Checkbox.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends Omit<HTMLAttributes<\"input\">, \"type\"> {}\r\n\r\nconst { class: className, id, ...attrs } = Astro.props;\r\n---\r\n\r\n<div class=\"inline-flex items-center\">\r\n  <label class=\"relative flex cursor-pointer items-center\" for={id}>\r\n    <input\r\n      {...attrs}\r\n      id={id}\r\n      type=\"checkbox\"\r\n      class={\"peer h-5 w-5 cursor-pointer transition-all appearance-none rounded border border-border checked:bg-primary disabled:opacity-50 disabled:cursor-not-allowed\"}\r\n    />\r\n    <span\r\n      class={cn(\r\n        \"text-primary-foreground pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 peer-checked:opacity-100\",\r\n        className,\r\n      )}\r\n    >\r\n      <slot>\r\n        <svg\r\n          xmlns=\"http://www.w3.org/2000/svg\"\r\n          class=\"h-3.5 w-3.5\"\r\n          viewBox=\"0 0 24 24\"\r\n          fill=\"none\"\r\n          stroke=\"currentColor\"\r\n          stroke-width=\"4\"\r\n        >\r\n          <path d=\"M20 6 9 17l-5-5\"></path>\r\n        </svg>\r\n      </slot>\r\n    </span>\r\n  </label>\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/checkbox/index.ts",
+      "content": "import Checkbox from \"./Checkbox.astro\";\r\n\r\nexport { Checkbox };\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

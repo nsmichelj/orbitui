@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ambient-image",
+  "files": [
+    {
+      "path": "../src/components/ui/ambient-image/AmbientFigcaption.astro",
+      "content": "---\nimport { cn } from \"@/lib/utils\";\nimport type { HTMLAttributes } from \"astro/types\";\n\ninterface Props extends HTMLAttributes<\"figcaption\"> {}\n\nconst { class: className, ...attrs } = Astro.props;\n---\n\n<figcaption\n  class={cn(\"text-foreground absolute bottom-4 left-4\", className)}\n  {...attrs}\n>\n  <slot />\n</figcaption>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/ambient-image/AmbientImage.astro",
+      "content": "---\nimport { cn } from \"@/lib/utils\";\nimport type { HTMLAttributes } from \"astro/types\";\n\ninterface Props\n  extends HTMLAttributes<\"figure\">,\n    Pick<\n      HTMLAttributes<\"img\">,\n      \"src\" | \"alt\" | \"width\" | \"height\" | \"loading\"\n    > {\n  blur?: number;\n  saturate?: number;\n  contrast?: number;\n  brightness?: number;\n  opacity?: number;\n}\n\nconst {\n  class: className,\n  src,\n  alt,\n  width,\n  height,\n  loading,\n  blur = 15,\n  saturate = 150,\n  contrast = 100,\n  brightness = 100,\n  opacity = 80,\n  ...attrs\n} = Astro.props;\n---\n\n<figure\n  class={cn(\"relative z-1 inline-block rounded-md\", className)}\n  style={{\n    \"--blur\": `${blur}px`,\n    \"--saturate\": `${saturate}%`,\n    \"--contrast\": `${contrast}%`,\n    \"--brightness\": `${brightness}%`,\n    \"--opacity\": `${opacity}%`,\n  }}\n  {...attrs}\n>\n  <div\n    class={cn(\n      \"absolute inset-0 z-[-1] blur-(--blur) saturate-(--saturate) contrast-(--contrast) brightness-(--brightness) opacity-(--opacity)\",\n    )}\n    aria-hidden=\"true\"\n  >\n    <img\n      src={src}\n      alt={alt}\n      width={width}\n      height={height}\n      class=\"h-full w-full rounded-[inherit] object-cover\"\n    />\n  </div>\n\n  <img\n    src={src}\n    alt={alt}\n    width={width}\n    height={height}\n    loading={loading}\n    class=\"relative block rounded-[inherit] object-cover\"\n  />\n\n  <slot />\n</figure>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/ambient-image/index.ts",
+      "content": "import AmbientFigcaption from \"./AmbientFigcaption.astro\";\nimport AmbientImage from \"./AmbientImage.astro\";\n\nexport { AmbientFigcaption, AmbientImage };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

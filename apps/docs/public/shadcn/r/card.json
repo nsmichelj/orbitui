@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "files": [
+    {
+      "path": "../src/components/ui/card/Card.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div\r\n  {...attrs}\r\n  class={cn(\r\n    \"bg-surface text-foreground border-border border rounded-lg shadow-sm\",\r\n    className,\r\n  )}\r\n>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/card/CardContent.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div {...attrs} class={cn(\"p-6\", className)}>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/card/CardDescription.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"p\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<p {...attrs} class={cn(\"font-normal text-muted-foreground\", className)}>\r\n  <slot />\r\n</p>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/card/CardFooter.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div\r\n  {...attrs}\r\n  class={cn(\"p-6 pt-0 flex items-center justify-between gap-2\", className)}\r\n>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/card/CardHeader.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div {...attrs} class={cn(\"p-6 pb-0 flex flex-col gap-1\", className)}>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/card/CardTitle.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"h5\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<h5\r\n  {...attrs}\r\n  class={cn(\r\n    \"flex items-center justify-start gap-2 text-2xl font-semibold tracking-tight\",\r\n    className,\r\n  )}\r\n>\r\n  <slot />\r\n</h5>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/card/index.ts",
+      "content": "import Card from \"./Card.astro\";\r\nimport CardContent from \"./CardContent.astro\";\r\nimport CardDescription from \"./CardDescription.astro\";\r\nimport CardFooter from \"./CardFooter.astro\";\r\nimport CardHeader from \"./CardHeader.astro\";\r\nimport CardTitle from \"./CardTitle.astro\";\r\n\r\nexport {\r\n  Card,\r\n  CardContent,\r\n  CardDescription,\r\n  CardFooter,\r\n  CardHeader,\r\n  CardTitle,\r\n};\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

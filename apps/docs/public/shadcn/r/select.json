@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select",
+  "files": [
+    {
+      "path": "../src/components/ui/select/index.ts",
+      "content": "import Option from \"./Option.astro\";\r\nimport Select from \"./Select.astro\";\r\nimport { selectVariants } from \"./selectVariants\";\r\n\r\nexport { Option, Select, selectVariants };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/select/Option.astro",
+      "content": "---\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"option\"> {}\r\n\r\nconst { ...attrs } = Astro.props;\r\n---\r\n\r\n<option {...attrs}>\r\n  <slot />\r\n</option>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/select/Select.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\nimport type { VariantProps } from \"class-variance-authority\";\r\nimport { selectVariants } from \"./selectVariants\";\r\n\r\ninterface Props\r\n  extends Omit<HTMLAttributes<\"select\">, \"disabled\">,\r\n    VariantProps<typeof selectVariants> {}\r\n\r\nconst { class: className, multiple, variant, disabled, ...attrs } = Astro.props;\r\n---\r\n\r\n<div class=\"relative\">\r\n  <select\r\n    {...attrs}\r\n    disabled={disabled}\r\n    multiple={multiple}\r\n    class={cn(selectVariants({ variant, disabled, className }))}\r\n  >\r\n    <slot />\r\n  </select>\r\n\r\n  {\r\n    !multiple && (\r\n      <svg\r\n        xmlns=\"http://www.w3.org/2000/svg\"\r\n        viewBox=\"0 0 24 24\"\r\n        fill=\"none\"\r\n        stroke=\"currentColor\"\r\n        stroke-width=\"2\"\r\n        class=\"text-input-placeholder absolute right-2.5 top-2.5 h-5 w-5\"\r\n      >\r\n        <path d=\"m7 15 5 5 5-5\" />\r\n        <path d=\"m7 9 5-5 5 5\" />\r\n      </svg>\r\n    )\r\n  }\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/select/selectVariants.ts",
+      "content": "import { cva } from \"class-variance-authority\";\r\n\r\nconst baseClass =\r\n  \"block w-full p-2.5 mb-2 text-sm rounded-lg outline-1 -outline-offset-1 appearance-none\";\r\n\r\nconst selectVariants = cva(baseClass, {\r\n  variants: {\r\n    variant: {\r\n      default:\r\n        \"text-foreground bg-input outline-input-border placeholder-input-placeholder cursor-pointer\",\r\n    },\r\n    disabled: {\r\n      false: null,\r\n      true: \"bg-input/40 outline-input-border/40 text-muted-foreground cursor-not-allowed\",\r\n    },\r\n  },\r\n  compoundVariants: [\r\n    {\r\n      variant: \"default\",\r\n      disabled: false,\r\n      class: \"focus:outline-2 focus:-outline-offset-2 focus:outline-primary\",\r\n    },\r\n  ],\r\n  defaultVariants: {\r\n    variant: \"default\",\r\n    disabled: false,\r\n  },\r\n});\r\n\r\nexport { selectVariants };\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

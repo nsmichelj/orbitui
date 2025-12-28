@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd",
+  "files": [
+    {
+      "path": "../src/components/ui/kbd/index.ts",
+      "content": "import Kbd from \"./Kbd.astro\";\r\n\r\nexport { Kbd };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/kbd/Kbd.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"kbd\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<kbd\r\n  class={cn(\r\n    \"border border-b-2 border-muted-foreground p-1 text-xs font-semibold text-foreground bg-muted rounded-lg uppercase\",\r\n    className,\r\n  )}\r\n  {...attrs}\r\n>\r\n  <slot />\r\n</kbd>\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

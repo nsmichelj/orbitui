@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "list",
+  "files": [
+    {
+      "path": "../src/components/ui/list/index.ts",
+      "content": "import List from \"./List.astro\";\r\nimport ListItem from \"./ListItem.astro\";\r\nimport { listItemVariants, listVariants } from \"./ListVariants\";\r\n\r\nexport { List, ListItem, listItemVariants, listVariants };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/list/List.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\nimport type { VariantProps } from \"class-variance-authority\";\r\nimport { listVariants } from \"./ListVariants\";\r\n\r\ninterface Props\r\n  extends HTMLAttributes<\"div\">,\r\n    VariantProps<typeof listVariants> {}\r\n\r\nconst {\r\n  class: className,\r\n  outerBorder,\r\n  innerBorders,\r\n  rounded,\r\n  ...attrs\r\n} = Astro.props;\r\n---\r\n\r\n<div\r\n  {...attrs}\r\n  class={cn(listVariants({ outerBorder, innerBorders, rounded, className }))}\r\n>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/list/ListItem.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\nimport type { VariantProps } from \"class-variance-authority\";\r\nimport { listItemVariants } from \"./ListVariants\";\r\n\r\nexport interface Props\r\n  extends HTMLAttributes<\"div\">,\r\n    Omit<HTMLAttributes<\"a\">, \"type\" | \"disabled\">,\r\n    Omit<HTMLAttributes<\"button\">, \"type\" | \"disabled\">,\r\n    VariantProps<typeof listItemVariants> {\r\n  as?: \"a\" | \"button\" | \"div\";\r\n}\r\n\r\nconst {\r\n  class: className,\r\n  as,\r\n  disabled,\r\n  rounded,\r\n  active,\r\n  ...attrs\r\n} = Astro.props;\r\n\r\nlet Comp: typeof as = \"div\";\r\nif (as === \"a\" || Astro.props.href) {\r\n  Comp = \"a\";\r\n} else if (as === \"button\") {\r\n  Comp = \"button\";\r\n}\r\n---\r\n\r\n<Comp\r\n  {...attrs}\r\n  disabled={disabled}\r\n  class={cn(listItemVariants({ active, disabled, rounded, className }))}\r\n  aria-label=\"list-item\"\r\n>\r\n  <slot />\r\n</Comp>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/list/ListVariants.ts",
+      "content": "import { cva } from \"class-variance-authority\";\r\n\r\nconst baseClass = \"flex flex-col bg-surface text-foreground overflow-hidden\";\r\n\r\nconst listVariants = cva(baseClass, {\r\n  variants: {\r\n    outerBorder: {\r\n      true: \"border  border-border\",\r\n      false: null,\r\n    },\r\n    innerBorders: {\r\n      true: \"divide-y divide-border\",\r\n      false: null,\r\n    },\r\n    rounded: {\r\n      none: \"rounded-none\",\r\n      xs: \"rounded-xs\",\r\n      sm: \"rounded-sm\",\r\n      md: \"rounded-md\",\r\n      lg: \"rounded-lg\",\r\n      xl: \"rounded-xl\",\r\n    },\r\n  },\r\n  defaultVariants: {\r\n    outerBorder: true,\r\n    innerBorders: true,\r\n    rounded: \"lg\",\r\n  },\r\n});\r\n\r\nconst listItemBaseClass =\r\n  \"px-4 py-2 flex items-center justify-between text-base text-start\";\r\n\r\nconst listItemVariants = cva(listItemBaseClass, {\r\n  variants: {\r\n    active: {\r\n      true: \"bg-foreground/5\",\r\n      false: null,\r\n    },\r\n    disabled: {\r\n      false: null,\r\n      true: \"opacity-50 cursor-not-allowed\",\r\n    },\r\n    rounded: {\r\n      none: \"rounded-none\",\r\n      xs: \"rounded-xs\",\r\n      sm: \"rounded-sm\",\r\n      md: \"rounded-md\",\r\n      lg: \"rounded-lg\",\r\n      xl: \"rounded-xl\",\r\n    },\r\n  },\r\n  compoundVariants: [\r\n    {\r\n      disabled: false,\r\n      class: \"hover:bg-foreground/5 focus:outline-none\",\r\n    },\r\n  ],\r\n  defaultVariants: {\r\n    disabled: false,\r\n    rounded: \"none\",\r\n  },\r\n});\r\n\r\nexport { listItemVariants, listVariants };\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

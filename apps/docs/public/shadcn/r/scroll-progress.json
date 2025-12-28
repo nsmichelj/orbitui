@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-progress",
+  "files": [
+    {
+      "path": "../src/components/ui/scroll-progress/index.ts",
+      "content": "import ScrollProgress from \"./ScrollProgress.astro\";\r\nimport ScrollProgressBar from \"./ScrollProgressBar.astro\";\r\n\r\nexport { ScrollProgress, ScrollProgressBar };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/scroll-progress/ScrollProgress.astro",
+      "content": "---\r\nimport ScrollProgressBar from \"./ScrollProgressBar.astro\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div\r\n  class={cn(\"fixed top-0 left-0 w-full h-[2px] bg-muted z-[1000]\", className)}\r\n  {...attrs}\r\n>\r\n  <slot>\r\n    <ScrollProgressBar />\r\n  </slot>\r\n</div>\r\n\r\n<script>\r\n  function initScrollProgress() {\r\n    const bar = document.querySelector<HTMLElement>(\r\n      \"[data-scroll-progress-bar]\",\r\n    );\r\n    if (!bar) return;\r\n\r\n    function updateBar() {\r\n      const total = document.documentElement.scrollHeight - window.innerHeight;\r\n      const progress = (window.scrollY / total) * 100;\r\n      bar!.style.width = `${progress}%`;\r\n    }\r\n\r\n    window.addEventListener(\"scroll\", updateBar);\r\n    updateBar();\r\n  }\r\n\r\n  initScrollProgress();\r\n  document.addEventListener(\"astro:after-swap\", () => {\r\n    initScrollProgress();\r\n  });\r\n</script>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/scroll-progress/ScrollProgressBar.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div\r\n  data-scroll-progress-bar\r\n  class={cn(\r\n    \"h-full bg-primary transition-all duration-100 ease-out\",\r\n    className,\r\n  )}\r\n  style=\"width: 0%;\"\r\n  {...attrs}\r\n>\r\n</div>\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

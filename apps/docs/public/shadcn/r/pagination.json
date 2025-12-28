@@ -1,0 +1,52 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination",
+  "files": [
+    {
+      "path": "../src/components/ui/pagination/index.ts",
+      "content": "import Pagination from \"./Pagination.astro\";\r\nimport PaginationContent from \"./PaginationContent.astro\";\r\nimport PaginationEllipsis from \"./PaginationEllipsis.astro\";\r\nimport PaginationItem from \"./PaginationItem.astro\";\r\nimport PaginationLink from \"./PaginationLink.astro\";\r\nimport PaginationNext from \"./PaginationNext.astro\";\r\nimport PaginationPrevious from \"./PaginationPrevious.astro\";\r\nimport { paginationLinkVariants } from \"./paginationVariants\";\r\n\r\nexport {\r\n  Pagination,\r\n  PaginationContent,\r\n  PaginationEllipsis,\r\n  PaginationItem,\r\n  PaginationLink,\r\n  paginationLinkVariants,\r\n  PaginationNext,\r\n  PaginationPrevious,\r\n};\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/pagination/Pagination.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"nav\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<nav role=\"navigation\" aria-label=\"pagination\" class={cn(className)} {...attrs}>\r\n  <slot />\r\n</nav>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/pagination/PaginationContent.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"ul\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<ul\r\n  class={cn(\"inline-flex justify-center items-center gap-2\", className)}\r\n  {...attrs}\r\n>\r\n  <slot />\r\n</ul>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/pagination/PaginationEllipsis.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"nav\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<span\r\n  aria-hidden=\"true\"\r\n  class={cn(\"flex items-center justify-center\", className)}\r\n  {...attrs}\r\n>\r\n  <slot>\r\n    <svg\r\n      xmlns=\"http://www.w3.org/2000/svg\"\r\n      viewBox=\"0 0 24 24\"\r\n      fill=\"none\"\r\n      stroke=\"currentColor\"\r\n      stroke-width=\"2\"\r\n      stroke-linecap=\"round\"\r\n      stroke-linejoin=\"round\"\r\n      class=\"size-4\"\r\n    >\r\n      <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"></path>\r\n      <path d=\"M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\"></path>\r\n      <path d=\"M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\"></path>\r\n      <path d=\"M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\"></path>\r\n    </svg>\r\n  </slot>\r\n  <span class=\"sr-only\">More pages</span>\r\n</span>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/pagination/PaginationItem.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"nav\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<li class={cn(className)} {...attrs}>\r\n  <slot />\r\n</li>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/pagination/PaginationLink.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\nimport type { VariantProps } from \"class-variance-authority\";\r\nimport { paginationLinkVariants } from \"./paginationVariants\";\r\n\r\ninterface Props\r\n  extends HTMLAttributes<\"a\">,\r\n    VariantProps<typeof paginationLinkVariants> {}\r\n\r\nconst { class: className, isActive, size, ...attrs } = Astro.props;\r\n---\r\n\r\n<a\r\n  data-active={isActive}\r\n  aria-current={isActive ? \"page\" : undefined}\r\n  class={cn(paginationLinkVariants({ isActive, size, className }))}\r\n  {...attrs}\r\n>\r\n  <slot />\r\n</a>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/pagination/PaginationNext.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\nimport type { VariantProps } from \"class-variance-authority\";\r\nimport PaginationLink from \"./PaginationLink.astro\";\r\nimport type { paginationLinkVariants } from \"./paginationVariants\";\r\n\r\ninterface Props\r\n  extends HTMLAttributes<\"a\">,\r\n    Omit<VariantProps<typeof paginationLinkVariants>, \"isActive\"> {}\r\n\r\nconst { class: className, size } = Astro.props;\r\n---\r\n\r\n<PaginationLink size={size} aria-label=\"Go to next page\" class={cn(className)}>\r\n  <slot />\r\n  <svg\r\n    xmlns=\"http://www.w3.org/2000/svg\"\r\n    viewBox=\"0 0 24 24\"\r\n    fill=\"none\"\r\n    stroke=\"currentColor\"\r\n    stroke-width=\"2\"\r\n    stroke-linecap=\"round\"\r\n    stroke-linejoin=\"round\"\r\n  >\r\n    <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"></path>\r\n    <path d=\"M9 6l6 6l-6 6\"></path></svg\r\n  >\r\n</PaginationLink>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/pagination/PaginationPrevious.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\nimport type { VariantProps } from \"class-variance-authority\";\r\nimport PaginationLink from \"./PaginationLink.astro\";\r\nimport type { paginationLinkVariants } from \"./paginationVariants\";\r\n\r\ninterface Props\r\n  extends HTMLAttributes<\"a\">,\r\n    Omit<VariantProps<typeof paginationLinkVariants>, \"isActive\"> {}\r\n\r\nconst { class: className, size, ...attrs } = Astro.props;\r\n---\r\n\r\n<PaginationLink\r\n  aria-label=\"Go to previous page\"\r\n  size={size}\r\n  class={cn(className)}\r\n  {...attrs}\r\n>\r\n  <svg\r\n    xmlns=\"http://www.w3.org/2000/svg\"\r\n    viewBox=\"0 0 24 24\"\r\n    fill=\"none\"\r\n    stroke=\"currentColor\"\r\n    stroke-width=\"2\"\r\n    stroke-linecap=\"round\"\r\n    stroke-linejoin=\"round\"\r\n  >\r\n    <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"></path>\r\n    <path d=\"M15 6l-6 6l6 6\"></path>\r\n  </svg>\r\n  <slot />\r\n</PaginationLink>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/pagination/paginationVariants.ts",
+      "content": "import { cva } from \"class-variance-authority\";\r\n\r\nconst baseClass =\r\n  \"inline-flex justify-center gap-1.5 items-center rounded-lg font-medium cursor-pointer outline-none whitespace-nowrap [&_svg]:pointer-events-none [&_svg]:shrink-0\";\r\n\r\nconst paginationLinkVariants = cva(baseClass, {\r\n  variants: {\r\n    isActive: {\r\n      true: \"border border-border\",\r\n      false: \"hover:bg-foreground/5\",\r\n    },\r\n    size: {\r\n      xs: \"px-3 py-2 text-xs [&_svg]:size-3.5\",\r\n      sm: \"px-3 py-2 text-sm [&_svg]:size-4\",\r\n      md: \"px-5 py-2.5 text-sm [&_svg]:size-4\",\r\n      lg: \"px-5 py-3 text-base [&_svg]:size-[18px]\",\r\n      xl: \"px-6 py-3.5 text-base [&_svg]:size-[18px]\",\r\n    },\r\n  },\r\n  defaultVariants: {\r\n    size: \"sm\",\r\n    isActive: false,\r\n  },\r\n});\r\n\r\nexport { paginationLinkVariants };\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "files": [
+    {
+      "path": "../src/components/ui/input/index.ts",
+      "content": "import Input from \"./Input.astro\";\r\nimport { inputVariants } from \"./inputVariants\";\r\n\r\nexport { Input, inputVariants };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/input/Input.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\nimport type { VariantProps } from \"class-variance-authority\";\r\nimport { inputVariants } from \"./inputVariants\";\r\n\r\ninterface Props\r\n  extends Omit<HTMLAttributes<\"input\">, \"disabled\">,\r\n    VariantProps<typeof inputVariants> {}\r\n\r\nconst { class: className, variant, disabled, ...attrs } = Astro.props;\r\n---\r\n\r\n<input\r\n  {...attrs}\r\n  disabled={disabled}\r\n  class={cn(inputVariants({ variant, disabled, className }))}\r\n/>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/input/inputVariants.ts",
+      "content": "import { cva } from \"class-variance-authority\";\r\n\r\nconst baseClass =\r\n  \"block w-full p-2.5 mb-2 text-sm rounded-lg outline-1 -outline-offset-1\";\r\n\r\nconst inputVariants = cva(baseClass, {\r\n  variants: {\r\n    variant: {\r\n      default:\r\n        \"text-foreground bg-input outline-input-border placeholder-input-placeholder\",\r\n    },\r\n    disabled: {\r\n      false: null,\r\n      true: \"bg-input/40 outline-input-border/40 text-muted-foreground cursor-not-allowed \",\r\n    },\r\n  },\r\n  compoundVariants: [\r\n    {\r\n      variant: \"default\",\r\n      disabled: false,\r\n      class: \"focus:outline-2 focus:-outline-offset-2 focus:outline-primary\",\r\n    },\r\n  ],\r\n  defaultVariants: {\r\n    variant: \"default\",\r\n    disabled: false,\r\n  },\r\n});\r\n\r\nexport { inputVariants };\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

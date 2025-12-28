@@ -1,0 +1,47 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "modal",
+  "files": [
+    {
+      "path": "../src/components/ui/modal/index.ts",
+      "content": "import Modal from \"./Modal.astro\";\r\nimport ModalContent from \"./ModalContent.astro\";\r\nimport ModalDescription from \"./ModalDescription.astro\";\r\nimport ModalFooter from \"./ModalFooter.astro\";\r\nimport ModalHeader from \"./ModalHeader.astro\";\r\nimport ModalTitle from \"./ModalTitle.astro\";\r\n\r\nexport {\r\n  Modal,\r\n  ModalContent,\r\n  ModalDescription,\r\n  ModalFooter,\r\n  ModalHeader,\r\n  ModalTitle,\r\n};\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/modal/Modal.astro",
+      "content": "<div data-modal-wrapper>\r\n  <slot />\r\n</div>\r\n\r\n<script>\r\n  import { Modal } from \"./modal\";\r\n\r\n  function init() {\r\n    const modals = document.querySelectorAll<HTMLElement>(\r\n      \"[data-modal-wrapper]\",\r\n    );\r\n    modals.forEach((modal) => {\r\n      new Modal(modal);\r\n    });\r\n  }\r\n\r\n  init();\r\n  document.addEventListener(\"astro:page-load\", () => init());\r\n</script>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/modal/modal.ts",
+      "content": "export class Modal {\n  private wrapper: HTMLElement;\n  private modal: HTMLElement | null;\n  private trigger: HTMLElement | null;\n  private backdrop: HTMLElement | null;\n  private closeButtons: NodeListOf<HTMLElement> | null;\n\n  constructor(wrapper: HTMLElement) {\n    this.wrapper = wrapper;\n    this.modal = this.wrapper.querySelector(\"[data-modal]\");\n    this.backdrop = this.wrapper.querySelector(\"[data-backdrop]\");\n    this.trigger = this.wrapper.querySelector(\"[data-trigger]\");\n    this.closeButtons = this.wrapper.querySelectorAll(\"[data-close]\");\n\n    if (!this.modal || !this.trigger) {\n      console.error(\"Modal not initialized properly\", {\n        modal: this.modal,\n      });\n      return;\n    }\n\n    this.init();\n  }\n\n  private init() {\n    this.setupAccessibility();\n    this.setupEventListeners();\n  }\n\n  private setupAccessibility() {\n    const title = this.modal?.querySelector<HTMLElement>(\n      \"h1, h2, h3, h4, h5, h6\",\n    );\n\n    if (title) {\n      const id =\n        title.id || `modal-id-${Math.random().toString(36).substring(2, 9)}`;\n      title.id = id;\n      this.modal?.setAttribute(\"aria-describedby\", id);\n    }\n\n    this.setState(\"closed\");\n  }\n\n  private setupEventListeners() {\n    this.trigger!.addEventListener(\"click\", () => this.open());\n\n    if (this.modal?.dataset.allowOutsideClick === \"true\") {\n      this.backdrop?.addEventListener(\"click\", () => this.closeModal());\n      document.addEventListener(\"click\", (e) => {\n        const target = e.target as HTMLElement;\n\n        if (this.modal?.dataset.state !== \"open\") return;\n\n        const clickedOutside = !this.modal.contains(target);\n        const clickedTrigger = this.trigger?.contains(target);\n\n        if (clickedOutside && !clickedTrigger) {\n          this.closeModal(false);\n        }\n      });\n    }\n\n    this.closeButtons?.forEach((trigger) => {\n      trigger.addEventListener(\"click\", () => this.closeModal());\n    });\n\n    document.addEventListener(\"keydown\", (e) => this.handleKeyDown(e));\n  }\n\n  private open() {\n    this.backdrop?.classList.remove(\"hidden\");\n    this.modal?.classList.remove(\"hidden\");\n    document.body.classList.add(\"overflow-hidden\");\n    setTimeout(() => {\n      this.setState(\"open\");\n    }, 0);\n  }\n\n  private closeModal(shouldReturnFocus: boolean = true) {\n    this.setState(\"closed\", shouldReturnFocus);\n\n    setTimeout(() => {\n      this.backdrop?.classList.add(\"hidden\");\n      this.modal?.classList.add(\"hidden\");\n      document.body.classList.remove(\"overflow-hidden\");\n    }, 200);\n  }\n\n  private setState(\n    state: \"open\" | \"closed\",\n    shouldReturnFocus: boolean = true,\n  ) {\n    if (state === \"closed\" && shouldReturnFocus) {\n      this.trigger?.focus();\n    }\n\n    this.modal?.setAttribute(\"aria-hidden\", `${state === \"closed\"}`);\n    this.modal?.setAttribute(\"data-state\", state);\n    this.backdrop?.setAttribute(\"aria-hidden\", `${state === \"closed\"}`);\n    this.backdrop?.setAttribute(\"data-state\", state);\n  }\n\n  private handleKeyDown = (event: KeyboardEvent) => {\n    if (event.key === \"Escape\" && this.modal!.dataset.state === \"open\") {\n      this.closeModal();\n      event.preventDefault();\n    }\n  };\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/modal/ModalContent.astro",
+      "content": "---\nimport { cn } from \"@/lib/utils\";\nimport type { HTMLAttributes } from \"astro/types\";\n\ninterface Props extends HTMLAttributes<\"div\"> {\n  showCloseButton?: boolean;\n  backdrop?: boolean;\n  allowOutsideClick?: boolean;\n}\n\nconst {\n  class: className,\n  showCloseButton = true,\n  backdrop = true,\n  allowOutsideClick = true,\n  ...attrs\n} = Astro.props;\n---\n\n{\n  backdrop && (\n    <div\n      class=\"bg-background fixed inset-0 top-0 left-0 z-50 hidden h-dvh w-full transition-opacity duration-100 data-[state=closed]:opacity-0 data-[state=open]:opacity-80\"\n      aria-hidden=\"true\"\n      data-state=\"closed\"\n      data-backdrop\n    />\n  )\n}\n\n<div\n  data-modal\n  role=\"dialog\"\n  aria-hidden=\"true\"\n  data-state=\"closed\"\n  data-show-close-button={showCloseButton}\n  data-allow-outside-click={allowOutsideClick}\n  class={cn(\n    \"hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-surface text-foreground border-border border rounded-lg shadow-sm p-6 w-full max-w-[calc(100%-2rem)] sm:max-w-md transform transition-all ease-in data-[state=closed]:opacity-0 data-[state=closed]:scale-95 data-[state=open]:opacity-100 data-[state=open]:scale-100\",\n    className,\n  )}\n  {...attrs}\n>\n  {\n    showCloseButton && (\n      <button\n        class=\"text-foreground hover:bg-muted absolute top-3 right-3 cursor-pointer rounded-lg p-1 transition-colors duration-150\"\n        aria-label=\"close modal\"\n        data-close\n      >\n        <svg\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 24 24\"\n          fill=\"none\"\n          stroke=\"currentColor\"\n          stroke-width=\"2\"\n          stroke-linecap=\"round\"\n          stroke-linejoin=\"round\"\n          class=\"size-4\"\n        >\n          <>\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            <path d=\"M18 6l-12 12\" />\n            <path d=\"M6 6l12 12\" />\n          </>\n        </svg>\n      </button>\n    )\n  }\n  <slot />\n</div>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/modal/ModalDescription.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"p\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<p {...attrs} class={cn(\"font-normal text-muted-foreground\", className)}>\r\n  <slot />\r\n</p>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/modal/ModalFooter.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div\r\n  {...attrs}\r\n  class={cn(\"pt-4 flex items-center justify-end gap-2\", className)}\r\n>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/modal/ModalHeader.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"div\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<div {...attrs} class={cn(\"flex flex-col gap-1 pb-4\", className)}>\r\n  <slot />\r\n</div>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/modal/ModalTitle.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"h2\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<h2\r\n  {...attrs}\r\n  class={cn(\r\n    \"flex items-center justify-start gap-2 text-2xl font-semibold tracking-tight\",\r\n    className,\r\n  )}\r\n>\r\n  <slot />\r\n</h2>\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

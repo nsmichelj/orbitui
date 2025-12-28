@@ -1,0 +1,47 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "files": [
+    {
+      "path": "../src/components/ui/breadcrumb/Breadcrumb.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"nav\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<nav aria-label=\"breadcrumb\" class={cn(\"w-max\", className)}>\r\n  <slot />\r\n</nav>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/breadcrumb/BreadcrumbEllipsis.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ntype Props = HTMLAttributes<\"span\">;\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<span\r\n  {...attrs}\r\n  role=\"presentation\"\r\n  aria-hidden=\"true\"\r\n  class={cn(\r\n    \"flex size-6 items-center justify-center [&>svg]:size-4\",\r\n    className,\r\n  )}\r\n>\r\n  <slot> ... </slot>\r\n</span>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/breadcrumb/BreadcrumbItem.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"li\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<li\r\n  {...attrs}\r\n  class={cn(\"flex flex-row items-center justify-between gap-1\", className)}\r\n>\r\n  <slot />\r\n</li>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/breadcrumb/BreadcrumbLink.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"a\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<a\r\n  {...attrs}\r\n  class={cn(\r\n    \"flex items-center justify-between gap-1 cursor-pointer hover:text-foreground [&_svg]:size-4\",\r\n    className,\r\n  )}\r\n>\r\n  <slot />\r\n</a>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/breadcrumb/BreadcrumbList.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"ol\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<ol\r\n  {...attrs}\r\n  class={cn(\r\n    \"flex flex-row flex-wrap items-center gap-2 rtl:flex-row-reverse text-muted-foreground break-words font-medium\",\r\n    className,\r\n  )}\r\n>\r\n  <slot />\r\n</ol>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/breadcrumb/BreadcrumbPage.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\n\r\ninterface Props extends HTMLAttributes<\"span\"> {}\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<spam\r\n  {...attrs}\r\n  class={cn(\r\n    \"flex items-center justify-between gap-1 cursor-pointer text-foreground [&_svg]:size-4\",\r\n    className,\r\n  )}\r\n>\r\n  <slot />\r\n</spam>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/breadcrumb/BreadcrumbSeparator.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport type { HTMLAttributes } from \"astro/types\";\r\n\r\ntype Props = HTMLAttributes<\"li\">;\r\n\r\nconst { class: className, ...attrs } = Astro.props;\r\n---\r\n\r\n<li\r\n  {...attrs}\r\n  role=\"presentation\"\r\n  aria-hidden=\"true\"\r\n  class={cn(\"[&_svg]:size-4\", className)}\r\n>\r\n  <slot> / </slot>\r\n</li>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/breadcrumb/index.ts",
+      "content": "import Breadcrumb from \"./Breadcrumb.astro\";\r\nimport BreadcrumbEllipsis from \"./BreadcrumbEllipsis.astro\";\r\nimport BreadcrumbItem from \"./BreadcrumbItem.astro\";\r\nimport BreadcrumbLink from \"./BreadcrumbLink.astro\";\r\nimport BreadcrumbList from \"./BreadcrumbList.astro\";\r\nimport BreadcrumbPage from \"./BreadcrumbPage.astro\";\r\nimport BreadcrumbSeparator from \"./BreadcrumbSeparator.astro\";\r\n\r\nexport {\r\n  Breadcrumb,\r\n  BreadcrumbEllipsis,\r\n  BreadcrumbItem,\r\n  BreadcrumbLink,\r\n  BreadcrumbList,\r\n  BreadcrumbPage,\r\n  BreadcrumbSeparator,\r\n};\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

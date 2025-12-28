@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "files": [
+    {
+      "path": "../src/components/ui/badge/Badge.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\nimport type { VariantProps } from \"class-variance-authority\";\r\nimport { badgeVariants } from \"./badgeVariants\";\r\n\r\ninterface Props\r\n  extends HTMLAttributes<\"div\">,\r\n    HTMLAttributes<\"a\">,\r\n    VariantProps<typeof badgeVariants> {}\r\n\r\nconst { class: className, variant, rounded, size, ...attrs } = Astro.props;\r\n\r\nconst Comp = Astro.props.href ? \"a\" : \"div\";\r\n---\r\n\r\n<Comp\r\n  {...attrs}\r\n  class={cn(badgeVariants({ variant, rounded, size, className }))}\r\n>\r\n  <slot />\r\n</Comp>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/badge/badgeVariants.ts",
+      "content": "import { cva } from \"class-variance-authority\";\r\n\r\nconst classBase =\r\n  \"inline-flex justify-center items-center gap-1 text-xs font-medium px-2.5 py-0.5\";\r\n\r\nconst badgeVariants = cva(classBase, {\r\n  variants: {\r\n    variant: {\r\n      default: \"bg-secondary text-secondary-foreground\",\r\n      outline:\r\n        \"bg-secondary text-secondary-foreground border-secondary-accent border\",\r\n    },\r\n    rounded: {\r\n      none: \"rounded-none\",\r\n      xs: \"rounded-xs\",\r\n      sm: \"rounded-sm\",\r\n      md: \"rounded-md\",\r\n      lg: \"rounded-lg\",\r\n      xl: \"rounded-xl\",\r\n      full: \"rounded-full\",\r\n    },\r\n    size: {\r\n      xs: \"text-xs [&_svg]:size-2.5\",\r\n      sm: \"text-sm [&_svg]:size-3\",\r\n      md: \"text-base [&_svg]:size-3\",\r\n      lg: \"text-lg [&_svg]:size-4\",\r\n      xl: \"text-xl [&_svg]:size-4\",\r\n    },\r\n  },\r\n  defaultVariants: {\r\n    variant: \"default\",\r\n    rounded: \"sm\",\r\n    size: \"xs\",\r\n  },\r\n});\r\n\r\nexport { badgeVariants };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/badge/index.ts",
+      "content": "import Badge from \"./Badge.astro\";\r\nimport { badgeVariants } from \"./badgeVariants\";\r\n\r\nexport { Badge, badgeVariants };\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

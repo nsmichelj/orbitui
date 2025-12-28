@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "files": [
+    {
+      "path": "../src/components/ui/marquee/index.ts",
+      "content": "import Marquee from \"./Marquee.astro\";\r\n\r\nexport { Marquee };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/marquee/Marquee.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface Props {\r\n  duration?: number;\r\n  gap?: number;\r\n  repeat?: number;\r\n  pauseOnHover?: boolean;\r\n  vertical?: boolean;\r\n  reverse?: boolean;\r\n}\r\n\r\nconst {\r\n  duration = 10,\r\n  gap = 1,\r\n  repeat = 4,\r\n  pauseOnHover = true,\r\n  vertical = false,\r\n  reverse = false,\r\n} = Astro.props;\r\n---\r\n\r\n<div\r\n  class={cn(\r\n    \"group flex overflow-hidden max-w-max p-2 gap-(--gap)\",\r\n    vertical ? \"flex-col\" : \"flex-row\",\r\n  )}\r\n  style={{\r\n    \"--gap\": `${gap}rem`,\r\n    \"--duration\": `${duration}s`,\r\n  }}\r\n>\r\n  {\r\n    Array(repeat)\r\n      .fill(0)\r\n      .map(() => (\r\n        <div\r\n          class={cn(\r\n            \"gap-(--gap) flex shrink-0 justify-around\",\r\n            {\r\n              \"group-hover:[animation-play-state:paused]\": pauseOnHover,\r\n              \"[animation-direction:reverse]\": reverse,\r\n            },\r\n            vertical\r\n              ? \"animate-marquee-vertical flex-col\"\r\n              : \"animate-marquee-horizontal flex-row\",\r\n          )}\r\n        >\r\n          <slot />\r\n        </div>\r\n      ))\r\n  }\r\n</div>\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

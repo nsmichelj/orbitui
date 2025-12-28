@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "files": [
+    {
+      "path": "../src/components/ui/textarea/index.ts",
+      "content": "import Textarea from \"./Textarea.astro\";\r\nimport { textareaVariants } from \"./TextareaVariants\";\r\n\r\nexport { Textarea, textareaVariants };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/textarea/Textarea.astro",
+      "content": "---\r\nimport { cn } from \"@/lib/utils\";\r\nimport { type HTMLAttributes } from \"astro/types\";\r\nimport type { VariantProps } from \"class-variance-authority\";\r\nimport { textareaVariants } from \"./TextareaVariants\";\r\n\r\ninterface Props\r\n  extends Omit<HTMLAttributes<\"textarea\">, \"disabled\">,\r\n    VariantProps<typeof textareaVariants> {}\r\n\r\nconst { class: className, variant, disabled, ...attrs } = Astro.props;\r\n---\r\n\r\n<textarea\r\n  {...attrs}\r\n  disabled={disabled}\r\n  class={cn(textareaVariants({ variant, disabled, className }))}\r\n>\r\n</textarea>\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "../src/components/ui/textarea/TextareaVariants.ts",
+      "content": "import { cva } from \"class-variance-authority\";\r\n\r\nconst baseClass =\r\n  \"block w-full p-2.5 mb-2 text-sm rounded-lg outline-1 -outline-offset-1\";\r\n\r\nconst textareaVariants = cva(baseClass, {\r\n  variants: {\r\n    variant: {\r\n      default:\r\n        \"text-foreground bg-input outline-input-border placeholder-input-placeholder\",\r\n    },\r\n    disabled: {\r\n      false: null,\r\n      true: \"bg-input/40 outline-input-border/40 text-muted-foreground cursor-not-allowed \",\r\n    },\r\n  },\r\n  compoundVariants: [\r\n    {\r\n      variant: \"default\",\r\n      disabled: false,\r\n      class: \"focus:outline-2 focus:-outline-offset-2 focus:outline-primary\",\r\n    },\r\n  ],\r\n  defaultVariants: {\r\n    variant: \"default\",\r\n    disabled: false,\r\n  },\r\n});\r\n\r\nexport { textareaVariants };\r\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
