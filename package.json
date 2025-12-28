@@ -23,7 +23,8 @@
     "cli:publish:beta": "pnpm --filter=orbitkit publish:beta",
     "cli:publish:release": "pnpm --filter=orbitkit publish:release",
     "components:publish:beta": "pnpm --filter=@orbitkit/components publish:beta",
-    "components:publish:release": "pnpm --filter=@orbitkit/components publish:release"
+    "components:publish:release": "pnpm --filter=@orbitkit/components publish:release",
+    "shadcn:registry:build": "pnpm --filter=docs shadcn:registry:build"
   },
   "keywords": [
     "orbit",

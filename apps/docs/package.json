@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "shadcn:registry:build": "npx shadcn@latest build -c shadcn/ -o ../public/shadcn/r && tsx ./shadcn/fix-registry.ts"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.37.0",
@@ -17,5 +18,8 @@
     "clsx": "2.1.1",
     "tailwind-merge": "3.4.0",
     "tailwindcss": "4.1.17"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0"
   }
 }
