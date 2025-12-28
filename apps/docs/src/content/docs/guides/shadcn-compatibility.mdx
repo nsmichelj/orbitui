@@ -1,0 +1,40 @@
+---
+title: Shadcn Compatibility
+description: A guide to ensure compatibility with shadcn UI components in your projects.
+---
+
+## Shadcn Compatibility Guide
+
+Learn how to configure the shadcn CLI to install OrbitUI components and ensure smooth integration with your existing project structure.
+
+:::caution[Experimental Feature]
+Support for the shadcn CLI is currently in **active development**. You may encounter inconsistencies regarding **path resolution, Tailwind configurations, or CSS styling**. If you find an error or wish to help us improve this integration, your feedback and contributions are highly appreciated!
+:::
+
+## Using the shadcn CLI with OrbitUI
+
+To use OrbitUI components with the CLI, you must have shadcn/ui already initialized in your project. If you haven't done this yet, follow <a href="https://ui.shadcn.com/docs/installation" target="_blank">the official shadcn/ui installation guide</a>.
+
+Once your project is ready, you can install components by pointing directly to their remote URL:
+
+```bash
+npx shadcn@latest add https://registry.orbitui.com/resources/button.json
+```
+
+## Registry Configuration
+
+To simplify the process and avoid typing full URLs every time, you can add OrbitUI as a custom registry in your `components.json` file:
+
+```json
+{
+  "registries": {
+    "@orbitui": "https://orbituidocs.vercel.app/shadcn/r/{name}.json"
+  }
+}
+```
+
+After adding the registry, you can install components using the shorthand syntax:
+
+```bash
+npx shadcn@latest add @orbitui/button
+```
